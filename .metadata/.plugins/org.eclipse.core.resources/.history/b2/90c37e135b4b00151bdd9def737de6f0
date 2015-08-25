@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+//<script type="text/javascript" src="js/file.js"></script>
+<script type="text/javascript" src="js/somefile.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<!-- 
+<button type="button" onclick="forarbeid()">Trykk meg!</button>
+
+<p id="forarbeid" style="display:inline;"></p>
+
+<br />
+<br />
+
+<button type="button" onclick="start()">Push</button>
+
+<input id="circular" type="text" />
+
+<p id="append"></p>
+
+<button onclick="this.vis()">Klikk </button>
+-->
+</body>
+</html>

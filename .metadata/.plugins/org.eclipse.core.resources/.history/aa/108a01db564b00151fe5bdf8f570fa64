@@ -1,8 +1,0 @@
-package no.hib.dat152.resources;
-
-import javax.ws.rs.Path;
-
-@Path("somepath")
-public class UnsecureResource {
-
-}

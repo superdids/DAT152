@@ -1,6 +1,0 @@
-package no.hib.dat152.resources;
-
-@Path("somepath")
-public class UnsecureResource {
-
-}
