@@ -1,0 +1,14 @@
+package no.hib.dat152.resources;
+
+import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
+
+@Path("somepath")
+public class UnsecureResource {
+
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	public Response something() {
+		
+	}
+}

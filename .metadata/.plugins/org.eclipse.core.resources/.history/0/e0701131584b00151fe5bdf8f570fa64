@@ -1,0 +1,19 @@
+package no.hib.dat152.resources;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+@Path("somepath")
+public class UnsecureResource {
+
+	@Path("a")
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+//	public Response something() {
+		public String something() { return " asd";
+//		return Response.ok("Some text from server").build();
+	}
+}
