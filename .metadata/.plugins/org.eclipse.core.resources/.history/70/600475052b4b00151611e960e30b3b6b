@@ -1,0 +1,57 @@
+//forarbeid
+var forarbeid = function() {
+	var fornavn = 'Ole';
+	var etternavn = new String('Olsen');
+	var like = typeof fornavn == typeof etternavn;
+
+	var finalString = fornavn + ' (implisitt kall på funksjonskonstruktør) ' 
+	+ etternavn + ' (eksplisitt kall på funksjonskonstruktør) '
+	+ (like ? 'like' : 'ikke like');
+
+	document.getElementById('forarbeid').innerHTML = finalString;
+}
+
+var started = false;
+var start = function() {
+	if(!started) {
+		window.setInterval(function(){
+			stuff();
+		}, 25);
+		started = true;
+	}
+}
+
+var stuff = function() {
+
+	txt = document.getElementById('circular').value;
+
+	console.log(typeof txt);
+	String.prototype.rotate = function () {
+		var iChar = this.charAt(0);
+		return this.slice(1) + iChar;
+	}
+	var varr = txt.rotate();
+	console.log(varr);
+	document.getElementById('circular').value = varr;
+	
+	document.getElementById('append').innerHTML += varr + '<br />';
+}
+
+//====================================================================================================
+//Oppgave 1
+//funksjonen skriver ut tittelen på HTML dokumentet
+window.onload = function() {
+	(function() {
+	window.alert(document.getElementsByTagName("title")[0].textContent);})();
+	Object.vis();
+	"god dag".vis();
+	(57).vis();
+	document.vis();
+	window.vis();
+	document.getElementsByTagName('p')[0].vis();
+	HTMLHeadingElement.vis();
+};
+
+Object.prototype.vis = function () {
+	window.alert("" + this + "\n==============\n" + typeof this);
+};
