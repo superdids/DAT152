@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+	<persistence-unit name="a">
+	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+	<class>no.ffi.database.Cmt</class>
+	<class>no.ffi.database.Message</class>
+	<class>no.ffi.database.Mission</class>
+	<class>no.ffi.database.Multimedia</class>
+	<class>no.ffi.database.Observation</class>
+	<class>no.ffi.database.Unit</class>
+	<class>no.ffi.database.Usr</class>
+	<properties>
+		<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"></property>
+		<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"></property> 
+		<property name="javax.persistence.jdbc.user" value="postgres"></property>
+		<property name="javax.persistence.jdbc.password" value="vepsebol"></property>
+	</properties>
+	</persistence-unit>
+</persistence>

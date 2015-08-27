@@ -8,9 +8,13 @@
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="constr"/>
+			<item value="pos"/>
+			<item value="kingseye"/>
 			<item value="king"/>
 		</list>
 		<list key="replacehistory">
+			<item value="rest"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

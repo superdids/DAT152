@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+	<persistence-unit name="a">
+	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+	
+	<class>no.hib.dat152.models.Person</class>
+	<class>no.hib.dat152.models.Car</class>
+	
+	<properties>
+		<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"></property>
+		<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"></property> 
+		<property name="javax.persistence.jdbc.user" value="postgres"></property>
+		<property name="javax.persistence.jdbc.password" value="postgres"></property>
+	</properties>
+	</persistence-unit>
+</persistence>

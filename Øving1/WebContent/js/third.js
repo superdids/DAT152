@@ -6,7 +6,7 @@ window.onload = function() {
 	var ctx = canvas.getContext('2d');
 
 	document.body.appendChild(canvas);
-	var c = new Pos(0,0); //c for current
+//	var c = new Pos(0,0); //c for current
 //	var p = new Pos(2,2); //p for previous
 	//starting off with diamond... from 0 to 5.
 
