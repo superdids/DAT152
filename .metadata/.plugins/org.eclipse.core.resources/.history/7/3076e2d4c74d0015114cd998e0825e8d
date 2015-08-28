@@ -1,0 +1,55 @@
+"use strict";
+
+(function() {
+	var lastet = function() {
+		console.log("Dokumentet er ferdig lastet.");
+	};
+	
+	window.addEventListener('load', lastet, true);
+})();
+
+//Oppgave 1
+var promptType = typeof prompt;
+console.log("The type of the prompt function is: " + promptType);
+//var read = prompt("Skriv inn data");
+//alert(read);
+
+//Oppgave 2
+function a() {
+	return parseInt("1000", 2);
+}
+
+function b() {
+	return parseInt("100", 2);
+}
+
+//AND
+console.log(a() & b());
+
+//OR
+console.log(a() | b());
+
+//XOR
+console.log(a() ^ b());
+
+//Oppgave 3
+function compute() {
+	var first = document.getElementById("first").value;
+	var second = document.getElementById("second").value;
+	
+	function num(input) { return parseInt(input); };
+	
+	first = num(first);
+	second = num(second);
+	var error = false;
+	if(isNaN(first)) {
+		error = true;
+		document.getElementById("erra").innerHTML = "Not a number.";
+	} else if(isNaN(second)) {
+		error = true;
+		document.getElementById("errb").innerHTML = "Not a number.";
+	}
+	
+	
+}
+console.log(isNaN(parseInt("asd")));

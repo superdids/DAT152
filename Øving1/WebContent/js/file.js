@@ -15,6 +15,7 @@ var started = false;
 var start = function() {
 	if(!started) {
 		window.setInterval(function(){
+//			stuff();
 			stuff();
 		}, 25);
 		started = true;
@@ -41,7 +42,7 @@ var stuff = function() {
 //Oppgave 1
 //første anonyme funksjon skriver ut tittelen på HTML dokumentet
 //hva som skrives ut i andre anonyme funksjon er kommentert der.
-//ved å følgende inn i aktuelt HTML dokument: '<button onclick="this.vis()">Klikk </button>',
+//Ved å putte følgende inn i aktuelt HTML dokument: '<button onclick="this.vis()">Klikk </button>',
 //vil HTMLButtonElement objektet skrives ut, typen vil være object. Dette tillates, da window.onload
 //funksjonen begynner når HTML dokumentet er fullstendig innlastet.
 window.onload = function() {
@@ -90,10 +91,47 @@ function Person(fornavn, etternavn) {
 Person.prototype.antallPersoner = 0;
 var enBabe = new Person("Anne");
 var toBabe = new Person(null,"Trebua");
-window.alert(enBabe.toString() + toBabe.toString());
+console.log(enBabe.toString() + toBabe.toString());
 enBabe.vis();
 
+//==================================================================================================
+//Oppgave 2
+
+//Første kodesnutt vil fungere
+function StudentTo() {
+	this._alder = null;
+}
+
+StudentTo.prototype.setAlder = function(alder) {
+	this._alder = alder;
+}
+
+//Andre kodesnutt vil i utgangspunktet fungere, men kan (avhengig av konteksten)
+//produsere tvetydige resultater av this.serAlder(alder) siden skopet til 
+//funksjonen også benytter seg av this._alder
+function Student() {
+	this._alder = null;
+	
+	this.setAlder = function(alder) {
+		this._alder = alder;
+	}
+}
+
+
+
+var student = new Student();
+student.setAlder(12);
+alert(student._alder);
+
+var stu = new StudentTo();
+stu.setAlder(13);
+alert(stu._alder);
+
+
+//==================================================================================================
+//Oppgave 3
 var tekstElm = '{"merke": "Ford", "modell": "Transit", "pris": 40000 }';
 var bil = JSON.parse(tekstElm);
-window.alert(bil.merke + ' ' + bil.modell + ' ' + bil.pris);
+console.log(bil.merke + ' ' + bil.modell + ' ' + bil.pris);
+
 

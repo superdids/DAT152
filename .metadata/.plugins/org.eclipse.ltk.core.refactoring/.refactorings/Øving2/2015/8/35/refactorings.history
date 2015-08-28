@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Øving2/WebContent/js/oving1.js&apos; to &apos;oving2.js&apos;" description="Rename resource &apos;oving1.js&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/js/oving1.js" name="oving2.js" stamp="1440795059526" updateReferences="true"/>
+</session>
