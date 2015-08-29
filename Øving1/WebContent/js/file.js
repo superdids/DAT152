@@ -56,7 +56,8 @@ window.onload = function() {
 		(57).vis(); //verdien til objektet som kaller vis(), som er 57, typen er object
 		document.vis(); //HTMLDocument, typen er object
 		window.vis(); //Window, typen er object
-		document.getElementsByTagName('p')[0].vis(); //HTMLParagraphElement, typen er object
+//		document.getElementsByTagName('p')[0].vis(); //HTMLParagraphElement, typen er object. 
+		//Dersom det ikke eksisterer en <p> tag, vil det kastes unntak...
 		HTMLHeadingElement.vis(); //konstruktørfunksjonen til HTMLReadingElement, typen er function
 	})();
 
@@ -97,12 +98,14 @@ enBabe.vis();
 //==================================================================================================
 //Oppgave 2
 
-//Første kodesnutt vil fungere
+//Første kodesnutt vil fungere, her vil 
 function StudentTo() {
 	this._alder = null;
+	console.log(this);
 }
 
 StudentTo.prototype.setAlder = function(alder) {
+	console.log(this);
 	this._alder = alder;
 }
 
@@ -111,21 +114,22 @@ StudentTo.prototype.setAlder = function(alder) {
 //funksjonen også benytter seg av this._alder
 function Student() {
 	this._alder = null;
-	
+	console.log(this);
 	this.setAlder = function(alder) {
+		console.log(this);
 		this._alder = alder;
 	}
 }
 
-
+var stu = new StudentTo();
+stu.setAlder(13);
+console.log(stu._alder);
 
 var student = new Student();
 student.setAlder(12);
-alert(student._alder);
+console.log(student._alder);
 
-var stu = new StudentTo();
-stu.setAlder(13);
-alert(stu._alder);
+
 
 
 //==================================================================================================
