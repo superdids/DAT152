@@ -1,0 +1,38 @@
+"use strict";
+
+var symbols = generateSymbols;
+var rows = 15;
+var cols = 75;
+window.onload = function() {
+	var elm = document.getElementById('digital');
+	elm.rows = rows;
+	elm.cols = cols;
+	
+
+	
+}
+
+
+function rand(arg) {
+	return Math.floor(Math.random() * arg);
+}
+
+
+
+
+function generateSymbols() {
+	var symb = new Array();
+	var index = 0;
+	for(; index < 10; index++) {
+		symb[x] = x;
+	}
+	
+	symb[index] = "@"; index++;
+	symb[index] = "#"; index++;
+	symb[index] = "$"; index++;
+	symb[index] = "{"; index++;
+	symb[index] = "}"; index++;
+	symb[index] = "["; index++;
+	symb[index] = "]"; index++;
+	symb[index] = "="; index++;
+}

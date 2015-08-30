@@ -1,0 +1,14 @@
+
+window.onload = function() {
+	var elm = document.getElementById('digital');
+	elm.rows = 30;
+	elm.cols = 103;
+	
+	for(var x = 0; x < 100; x++) {
+		elm.value += "a";
+	}
+}
+
+function rand() {
+	
+}

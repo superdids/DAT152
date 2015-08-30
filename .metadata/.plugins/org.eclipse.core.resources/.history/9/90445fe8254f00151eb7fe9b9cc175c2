@@ -1,0 +1,22 @@
+"use strict";
+
+var symbols = [];
+var rows = 15;
+var cols = 75;
+window.onload = function() {
+	var elm = document.getElementById('digital');
+	elm.rows = 15;
+	elm.cols = 75;
+	
+	for(var x = 0; x < 50; x++) {
+		elm.value += "w";
+	}
+}
+
+function rand(arg) {
+	return Math.floor(Math.random() * arg);
+}
+
+
+
+
