@@ -1,0 +1,9 @@
+"use strict";
+
+(function() {
+	function init() {
+		document.getElementsByTagName('div')[0].textContent = "Loaded.";
+	}
+	
+	window.addEventListener("load", init, false);
+})();

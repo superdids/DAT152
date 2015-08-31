@@ -1,0 +1,34 @@
+"use strict";
+
+(function() {
+	function init() {
+		document.getElementsByTagName('div')[0].textContent = "Loaded.";
+	}
+	
+	window.addEventListener("load", init, false);
+})();
+
+
+
+(function() {
+
+	function init() {
+		document.getElementsByTagName('div')[1].textContent = "Some stuff.";
+	}
+	window.addEventListener("load", init, false);
+})();
+
+
+
+//this - ting i objektet
+
+var person = (function() {
+	var firstname = "Ole";
+	
+	return {
+		company: "hib",
+		getNameAndComp: function() {
+			return firstname + " " + this.company;
+		}
+	}
+})();

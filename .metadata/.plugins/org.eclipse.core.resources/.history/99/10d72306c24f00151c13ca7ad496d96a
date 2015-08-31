@@ -1,0 +1,29 @@
+"use strict";
+
+(function() {
+	function init() {
+		document.getElementsByTagName('div')[0].textContent = "Loaded.";
+	}
+	
+	window.addEventListener("load", init, false);
+})();
+
+
+
+(function() {
+
+	function init() {
+		document.getElementsByTagName('div')[1].textContent = "Some stuff.";
+	}
+	window.addEventListener("load", init, false);
+})();
+
+
+
+function X() {
+	
+	//lokal/privat variabel
+	var a = 3;
+}
+
+//X().a; //ikke mulig
