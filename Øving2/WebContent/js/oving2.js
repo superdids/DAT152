@@ -235,6 +235,7 @@ function oppgave15() {
 
 
 
+
 function computeDate(d,m,y) {
 
 	var dd = document.getElementById(d);
