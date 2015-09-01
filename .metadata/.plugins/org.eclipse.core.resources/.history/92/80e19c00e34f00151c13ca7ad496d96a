@@ -1,0 +1,17 @@
+#wrapper {
+	width: 60%;
+	align: center;
+	margin: auto;
+}
+
+div.left {
+	width: 50%;
+	float: left;
+	margin-right: 2%;
+}
+
+div.right {
+	width: 50%;
+	float: right;
+	margin-left: 2%;
+}

@@ -1,0 +1,16 @@
+#wrapper {
+	align: center;
+}
+
+div.left {
+	width: 50%;
+	float: left;
+	border-right: solid black 1px;
+	margin: auto;
+}
+
+div.right {
+	width: 50%;
+	float: right;
+	margin: auto;
+}

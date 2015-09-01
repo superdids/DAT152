@@ -35,4 +35,11 @@ var person = (function() {
 	};
 })();
 
-alert(person.getNameAndComp());
+console.log(person.getNameAndComp())
+
+
+var obj = { "firstname": "dids", "lastname": "aubert" };
+
+for(var a in obj) {
+	console.log(a + ": " + obj[a]);
+}

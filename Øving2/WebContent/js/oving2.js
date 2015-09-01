@@ -4,47 +4,55 @@
 	var lastet = function() {
 		console.log("Dokumentet er ferdig lastet.");
 	};
-	
+
 	window.addEventListener('load', lastet, true);
 })();
 
 //Oppgave 1
-var promptType = typeof prompt;
-console.log("The type of the prompt function is: " + promptType);
-//var read = prompt("Skriv inn data");
-//alert(read);
+function oppgave1() {
+	var promptType = typeof prompt;
+	var read = prompt("Enter some data:");
+	alert(read);
+	alert("The type of the prompt function is: " + promptType);
+
+}
 
 //Oppgave 2
-function a() {
-	return parseInt("1000", 2);
+function oppgave2() {
+	var first = document.getElementById('oppgave2first').value;
+	var second = document.getElementById('oppgave2second').value;
+
+	var setDocument = function(arga, argb) {
+		document.getElementById(arga).innerHTML = argb;
+	}
+
+	var parse = function(arg) {
+		return parseInt(arg, 2);
+	}
+
+	first = parse(first); second = parse(second);
+
+	if(isNaN(first)) first = 0;
+	if(isNaN(second)) second = 0;
+
+	setDocument('and', "AND: " + (first & second).toString(2));
+	setDocument('or', "OR:  " + (first | second).toString(2));
+	setDocument('xor', "XOR: " + (first ^ second).toString(2));
 }
-
-function b() {
-	return parseInt("100", 2);
-}
-
-//AND
-console.log(a() & b());
-
-//OR
-console.log(a() | b());
-
-//XOR
-console.log(a() ^ b());
 
 //Oppgave 3
 function compute() {
 	var first = document.getElementById("first").value;
 	var second = document.getElementById("second").value;
-	
+
 	function num(input) { return parseInt(input); };
 	function set(arg, val) {
 		document.getElementById(arg).innerHTML = val;
 	}
-	
+
 	first = num(first);
 	second = num(second);
-	
+
 	var error = false;
 	if(isNaN(first)) {
 		error = true;
@@ -58,7 +66,7 @@ function compute() {
 	} else {
 		set("errb", "");
 	}
-	
+
 	if(error) {
 		set("result", "");
 	} else {
@@ -66,11 +74,16 @@ function compute() {
 		set("errb", "");
 		set("result", (first+second));
 	}
-	
+
 }
 
 //Oppgave 4
 //Vet ikke om jeg gidder å lage regex for dette...
+function oppgave4() {
+	var url = document.getElementById('url').value;
+	url = encodeURI(url);
+	document.getElementById('oppgave4result').innerHTML = url;
+}
 
 
 //Oppgave  5
@@ -84,7 +97,7 @@ function oppgave6() {
 }
 
 //Oppgave 7
-//this refereres av window objektet, men er ikke definert i skriv() funksjonen
+//this refereres av window objektet, og variablen navn ligger i skopet til window.
 var navn = "Ole";
 this.navn += " Olsen";
 console.log(this);
@@ -94,68 +107,67 @@ function skriv() {
 }
 
 //Oppgave 8
-//this refererer til HTMLInputElement objektet, dette kan verifiseres
-//ved å putte en id i input tagget (f.eks a) og sjekke at typene 
-//samsvarer, se linjen under.
-//alert(elm === document.getElementById('a'));
+//this refererer til objektet main
 var main = {
-	endre: function(elm) {
-		elm.value = "Jeg ble klikket";
-	}
+		count: 0,
+		endre: function(elm) {
+			++this.count;
+			elm.value = (this.count%2 == 0) ? "Jeg ble klikket" : "Slutt å trykke!!";
+		}
 };
 
 //Oppgave 9
 //Ved å kalle mainNine.visThis() gjennom onclick hendelsen 
-//fra et input vil typen fortsatt være objektet til mainNine, dette
-//fordi this ikke sendes som et argument fra HTML taggen.
+//fra et input vil typen fortsatt være objektet mainNine
 var mainNine = {
-	visThis: function() {
-		console.log(this);
-	}
+		visThis: function() {
+			console.log(this);
+		}
 };
 
 //Ved å ikke sende et argument vil this refereres objektet mainNine
 mainNine.visThis();
 
 //Oppgave 10
+
 var timerDemo = {
-	timer: function() {
-		setTimeout(this.visThis(), 2000);
-	},
-	visThis: function() {
-		console.log(this);
-	}
+		timer: function() {
+			setTimeout(this.visThis, 2000);
+		},
+		visThis: function() {
+//			console.log("Oppgave 10");
+			console.log(this);
+		}
 };
-//Begge tilfellene vil resultere i at this refereres til et JSON objekt.
-//MEn timeren funker ikke..?
-timerDemo.visThis();
-timerDemo.timer();
 
 //Oppgave 11
-//this refererer fortsatt til et JSON objekt
 var eventdemo = {
-	load: function() {
-		window.addEventListener('load', this.visThis(), false);
-	},
-	visThis: function() {
-		console.log(this);
-	}
+		load: function() {
+			window.addEventListener('load', this.visThis, false);
+		},
+		visThis: function() {
+			console.log(this);
+		}
 };
 
-eventdemo.load();
-eventdemo.visThis();
+//this refererer til objektet eventdemo
+//eventdemo.load();
+//this vil nå referere til window objektet
+//eventdemo.visThis();
 
 //Oppgave 12
 var array = new Array();
 var tmp = "";
 for(var x = 0; x < 10; x++) {
-	array[x] = Math.random() * 100;
-	tmp += array[x] + " ";
+//	array[x] = Math.random() * 100;
+//	tmp += array[x] + " ";
+	array[x] = new Date(2015, Math.floor(Math.random()*12), Math.floor(Math.random()*29));
+	tmp += array[x].toString();
 }
 
 console.log(tmp);
 array.sort((function(a,b) {
-	return a-b;
+	return a > b;
 })); 
 //Hvorfor opprette et predikat når det bare kan sendes direkte
 //som en anonymfunksjon... Eller jo, det finnes tilfeller når 
@@ -192,15 +204,78 @@ function push() {
 	array.push(toPush); 
 	++current;
 	var list = document.getElementById('stack');
-	
+
 	list.insertBefore(toPush, list.childNodes[0]);
 }
 
 
+function oppgave14() {
+
+	var date = computeDate('oppgave14dd','oppgave14mm','oppgave14yyyy');
+	var res = document.getElementById('oppgave14res');
+	res.innerHTML = res.innerHTML.split(":")[0] + ":";
+	if(date != undefined) {
+		var dag = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"][date.getDay()];
+		res.innerHTML += " " + dag;
+	}
+}
+
+function oppgave15() {
+	var dateOne = computeDate('oppgave15dd1','oppgave15mm1','oppgave15yyyy1');
+	var dateTwo = computeDate('oppgave15dd2','oppgave15mm2','oppgave15yyyy2');
+	var res = document.getElementById('oppgave15res');
+	res.innerHTML = res.innerHTML.split(":")[0] + ":";
+	if(dateOne == undefined || dateTwo == undefined) return;
+	
+	var oneDay = 24*60*60*1000;
+	var dayDiff = Math.round(Math.abs((dateOne.getTime() - dateTwo.getTime())/oneDay));
+	
+	res.innerHTML += " " + dayDiff;
+}
 
 
 
+function computeDate(d,m,y) {
 
+	var dd = document.getElementById(d);
+	var mm = document.getElementById(m);
+	var yyyy = document.getElementById(y);
 
+	var year = yyyy.value; 
+	year = parseInt(year);
+	var invalid = false;
+	if(isNaN(year) || year < 0) {
+		invalid = true;
+		yyyy.style.color = "red";
+	}
 
+	var month = mm.value;
+	month = parseInt(month);
+	if(isNaN(month) || month < 1 || month > 12) {
+		invalid = true;
+		mm.style.color = "red";
+	}
 
+	var day = dd.value;
+	day = parseInt(day);
+	if(isNaN(day) || day < 1 || day > 31) {
+		invalid = true;
+		dd.style.color = "red";
+	}
+
+	var date = new Date(year, month, 0);
+	if(day > date.getDate()) {
+		invalid = true;
+		dd.style.color = "red";
+	}
+
+	if(invalid) return undefined;
+
+	date = new Date(year, month, day);
+
+	yyyy.style.color = "black";
+	mm.style.color = "black";
+	dd.style.color = "black";
+
+	return date
+}

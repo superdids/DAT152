@@ -98,7 +98,10 @@ enBabe.vis();
 //==================================================================================================
 //Oppgave 2
 
-//Første kodesnutt vil fungere, her vil 
+//Forskjellen mellom StudentTo og Student er at. Det vil kun opprettes 
+//en funksjon, setAlder(alder), for StudentTo, assosiert til prototype.
+//For Student vil det opprettes en funksjon for hver instansiering.
+//Student er derfor mindre effektiv
 function StudentTo() {
 	this._alder = null;
 	console.log(this);
@@ -109,9 +112,6 @@ StudentTo.prototype.setAlder = function(alder) {
 	this._alder = alder;
 }
 
-//Andre kodesnutt vil i utgangspunktet fungere, men kan (avhengig av konteksten)
-//produsere tvetydige resultater av this.serAlder(alder) siden skopet til 
-//funksjonen også benytter seg av this._alder
 function Student() {
 	this._alder = null;
 	console.log(this);
