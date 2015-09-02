@@ -1,0 +1,4 @@
+var Person = (function(a,b) {
+	var name = a || "";
+	
+})();

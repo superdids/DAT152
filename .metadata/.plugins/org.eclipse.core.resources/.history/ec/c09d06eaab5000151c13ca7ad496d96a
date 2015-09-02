@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/digitalRain.js"></script>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<title>Insert title here</title>
+</head>
+<body>
+<div id="backdrop">
+<canvas id="c"></canvas>
+</div>
+
+<div id="curtain">
+<h1 align="center"> Didztrix</h1>
+</div>
+
+</body>
+</html>

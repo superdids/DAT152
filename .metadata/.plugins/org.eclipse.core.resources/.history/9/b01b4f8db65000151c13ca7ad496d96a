@@ -1,0 +1,44 @@
+body {
+	background-color: black;
+}
+
+input {
+	background-color: black;
+	font-color: green;
+}
+
+#wrapper {
+	width: 80%;
+	align: center;
+	margin: auto;
+}
+
+div.left {
+	width: 50%;
+	float: left;
+}
+
+div.right {
+	width: 50%;
+	float: right;
+}
+
+#datowrapper {
+	width: 100%;	
+}
+
+div.boks {
+	display: inline;
+	width: 30%;
+	float: left;
+	margin: 3px;
+}
+
+input.lol {
+	width: 100%;
+}
+
+canvas{ 
+	display: inline; 
+	background: black; 
+}

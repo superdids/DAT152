@@ -1,0 +1,17 @@
+
+* {margin: 0; padding: 0;}
+
+body {background: black;}
+canvas {display: block;}
+
+div {
+	left: 50%;
+	align: center;
+	top: 10%;
+}
+
+h1 {
+	
+	font-size: 100px;
+	color: #64FE2E;
+}

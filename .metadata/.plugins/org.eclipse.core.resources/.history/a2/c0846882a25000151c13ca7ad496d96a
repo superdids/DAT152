@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/oving2.js"></script>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<title>Insert title here</title>
+</head>
+<body>
+<div id="wrapper">
+<div class="left">
+<h2>Oppgave 1</h2>
+<input type="button" onclick="oppgave1()" value="Run" />
+
+<h2>Oppgave 2</h2>
+<p>Enter two BINARY numbers, and I will perform some bitwise operations on them</p>
+<input id="oppgave2first" type="number" value="1000" style="display: inline" />
+<input id="oppgave2second" type="number" value="100" style="display: inline" />
+<br />
+<p id="and"></p>
+<p id="or"></p>
+<p id="xor"></p>
+
+<input type="button" onclick="oppgave2()" value="Compute" />
+
+
+<h2>Oppgave 3</h2>
+<p>Enter two numbers to get the sum.</p>
+<input id="first" type="text" style="display: inline" />
+<p id="erra" style="display: inline; color: red"></p> 
+<br />
+
+<input id="second" type="text" style="display: inline" />
+<p id="errb" style="display: inline; color: red"></p> 
+<br />
+<br />
+<p id="result"></p>
+<input type="button" onclick="compute()" value="Compute sum" />
+
+<h2>Oppgave 4</h2>
+<input id="url" type="text" value="http://didrikÅbør.com" />
+<input type="button" onclick="oppgave4()" value="Validate" />
+<p id="oppgave4result" style="display: inline"></p>
+
+
+<h2>Oppgave 6</h2>
+<input id="six" type="text" />
+<input type="button" onclick="oppgave6()" value="Execute code" />
+
+<h2>Oppgave 7</h2>
+<input type="button" onclick="skriv()" value="Execute" />
+
+<h2>Oppgave 8</h2>
+<input id="a" type="button" onclick="main.endre(this)" value="Klikk meg" />
+
+<h2>Oppgave 9</h2>
+<input type="button" onclick="mainNine.visThis()" value="Click" />
+
+<h2>Oppgave 10</h2>
+<input type="button" onclick="timerDemo.visThis(); timerDemo.timer()" value="Click!" />
+
+<h2>Oppgave 11</h2>
+<textarea rows="4" cols="50" readonly>
+* ved kall på eventdemo.load() vil this referere til objektetet eventdemo
+* ved kall på eventdemo.visThis() vil this referere til objektet window!
+</textarea> 
+<br />
+<input type="button" onclick="eventdemo.load(); eventdemo.visThis()" value="Click!" />
+
+<h2>Oppgave 14</h2>
+<p>Skriv inn en dato:</p>
+<div id="datowrapper">
+<div class="boks">
+<p>dd</p>
+<input class="lol" id="oppgave14dd" type="number" />
+</div>
+
+<div class="boks">
+<p>mm</p>
+<input class="lol"  id="oppgave14mm" type="number" />
+</div>
+
+<div class="boks">
+<p>yyyy</p>
+<input class="lol" id="oppgave14yyyy" type="number" />
+</div>
+</div>
+
+<p id="oppgave14res">Ukedagen til denne datoen er:</p> <br />
+<input type="button" onclick="oppgave14()" value="Beregn" />
+<h2>Oppgave 15</h2>
+<p>Skriv inn to datoer for å finne forskjellen</p>
+<div id="datowrapper">
+<div class="boks">
+<p>dd</p>
+<input class="lol" id="oppgave15dd1" type="number" />
+</div>
+
+<div class="boks">
+<p>mm</p>
+<input class="lol" id="oppgave15mm1" type="number" />
+</div>
+
+<div class="boks">
+<p>yyyy</p>
+<input class="lol" id="oppgave15yyyy1" type="number" />
+</div>
+
+
+</div>
+
+<div id="datowrapper">
+<div class="boks">
+<p>dd</p>
+<input class="lol" id="oppgave15dd2" type="number" />
+</div>
+
+<div class="boks">
+<p>mm</p>
+<input class="lol" id="oppgave15mm2" type="number" />
+</div>
+
+<div class="boks">
+<p>yyyy</p>
+<input class="lol" id="oppgave15yyyy2" type="number" />
+</div>
+
+</div>
+
+<p id="oppgave15res">Total difference in days:</p>
+<input type="button" onclick="oppgave15()" value="Compute!" />
+
+
+<h2>Oppgave 16</h2>
+
+</div>
+<div class="right">
+
+<h2>Oppgave 13 - Mucho Stablo</h2>
+<input id="pushvalue" type="text" value="Enter some value" />
+<input type="button" onclick="push()" value="Push" />
+<input type="button" onclick="pop()" value="Pop" />
+
+<ul id="stack"> 
+<li>Some value</li>
+<li>Some other value</li>
+</ul>
+
+
+</div>
+
+
+
+</div>
+
+</body>
+</html>

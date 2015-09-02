@@ -2,7 +2,8 @@
 
 var canvas, ctx, fontSize, cols;
 //var symbols = generateSymbols();
-var symbols = "あかさたないきしちにうくすつぬえけせてねおこそとのはまやらわひみりをふむゆるんへめれ".split("");
+//var symbols = "あかさたないきしちにうくすつぬえけせてねおこそとのはまやらわひみりをふむゆるんへめれ".split("");
+var symbols = "可な およびそのマクセシビリティビリティセシビリへの切りえロジのため".split("");
 
 var drops = [];
 //var bools = [];

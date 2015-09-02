@@ -1,0 +1,12 @@
+var Person = (function(a,b) {
+	var name = a || "";
+	
+	return {
+		comp: b || "";
+		getName: function() {
+			return this.name;
+		}
+		setName
+	}
+	
+})();

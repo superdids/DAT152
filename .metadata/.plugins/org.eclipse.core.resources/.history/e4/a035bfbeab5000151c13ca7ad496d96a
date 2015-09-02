@@ -1,0 +1,22 @@
+
+* {margin: 0; padding: 0;}
+
+body {background: black;}
+canvas {display: block;}
+
+#backdrop, #curtain {
+  height: 100px;
+  width: 200px;
+}
+
+#curtain {
+  position: relative;
+  top: -100px;
+}
+
+h1 {
+	font-size: 100px;
+	color: #64FE2E;
+
+/* 	z-index: -1; */
+}

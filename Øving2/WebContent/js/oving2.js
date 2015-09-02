@@ -208,7 +208,7 @@ function push() {
 	list.insertBefore(toPush, list.childNodes[0]);
 }
 
-
+//Oppgave 14
 function oppgave14() {
 
 	var date = computeDate('oppgave14dd','oppgave14mm','oppgave14yyyy');
@@ -220,21 +220,19 @@ function oppgave14() {
 	}
 }
 
+//Oppgave 15
 function oppgave15() {
 	var dateOne = computeDate('oppgave15dd1','oppgave15mm1','oppgave15yyyy1');
 	var dateTwo = computeDate('oppgave15dd2','oppgave15mm2','oppgave15yyyy2');
 	var res = document.getElementById('oppgave15res');
 	res.innerHTML = res.innerHTML.split(":")[0] + ":";
 	if(dateOne == undefined || dateTwo == undefined) return;
-	
+
 	var oneDay = 24*60*60*1000;
 	var dayDiff = Math.round(Math.abs((dateOne.getTime() - dateTwo.getTime())/oneDay));
-	
+
 	res.innerHTML += " " + dayDiff;
 }
-
-
-
 
 function computeDate(d,m,y) {
 
@@ -272,7 +270,7 @@ function computeDate(d,m,y) {
 
 	if(invalid) return undefined;
 
-	date = new Date(year, month, day);
+	date = new Date(year, month-1, day);
 
 	yyyy.style.color = "black";
 	mm.style.color = "black";
@@ -280,3 +278,106 @@ function computeDate(d,m,y) {
 
 	return date
 }
+
+//Oppgave 16
+function oppgave16() {
+	var AA = new Array(1,2,3,4);
+	demo(AA);
+	alert(AA);
+
+}
+
+function demo(aa) {
+	aa[aa.length] = "Hei";
+	//aa er en referanse, direkte endring av objektets referanse
+	//vil ikke påvirke objektet som ble sendt som referanseparameter. 
+	//Endring av et av objektets properties, derimot, vil påvirke 
+	//objektet som ble sendt som referanseparameter.
+
+	aa = null; //AA fra oppgave16() vil ikke påvirkes
+	//aa.length = 0; //AA fra oppgave16() vil påvirkes, og vil bli tømt
+	//men holder dette til å "slette" ett objekt, kan et objekt i det hele
+	//tatt slettes manuelt i kildekoden?
+}
+
+//Oppgave 17
+(function() {
+	var lastet = function() {
+		document.getElementById('17a').addEventListener('click', (function() {
+			return ob.func(1,2,3,4,7,6,5);
+		}));
+		document.getElementById('17b').addEventListener('click', (function() {
+			return ob.func(1,2,3,4);
+		}));
+		document.getElementById('17c').addEventListener('click', (function() {
+			return ob.func(1,2,3);
+		}));
+		document.getElementById('17d').addEventListener('click', (function() {
+			return ob.func(1,2,3,4,7);
+		}));
+	};
+	window.addEventListener('load', lastet, true);
+
+})();
+
+var ob = {
+		func: function() {
+			var list = document.getElementById('o17');
+			while(list.firstChild) list.removeChild(list.firstChild);
+
+			var toPush = document.createElement('li');
+			toPush.textContent = document.getElementById('pushvalue').value;
+
+			for(var index in arguments) {
+				var toIns = document.createElement('li');
+				toIns.textContent = arguments[index];
+				list.appendChild(toIns);
+			}
+		}
+};
+
+//Oppgave 18
+function oppgave18(a) {
+	if(typeof a === "function")
+		alert("iz funk!");
+	else
+		alert("newp, not a funk");
+}
+
+//window.addEventListener('load', lastet, true);
+
+(function() {
+	var lastet = function() {
+		document.getElementById('18a').addEventListener('click', (function() {
+			return oppgave18("parameter!!");
+		}));
+
+		document.getElementById('18b').addEventListener('click', (function() {
+			return oppgave18(function() { return 3; });
+		}));
+	};
+	window.addEventListener('load', lastet, true);
+})();
+
+//Oppgave 19
+(function() {
+	var lastet = function() {
+		var resL = document.getElementById('19resL');
+		resL.innerHTML += " " + Number.MAX_VALUE;
+		var resB = document.getElementById('19resB');
+		resB.innerHTML += " " + Number.MIN_VALUE;
+	};
+	window.addEventListener('load', lastet, true);
+})();
+
+//Oppgave 20
+function oppgave20() {
+	var primitivStreng = "abc";
+	var objektStreng = new String("abc");
+	alert("Primitive type: " + typeof primitivStreng);
+	alert("Instance of String? " + (primitivStreng instanceof String));
+	alert("Object type: " + typeof objektStreng);
+	alert("Instance of String? " + (objektStreng instanceof String));
+}
+
+

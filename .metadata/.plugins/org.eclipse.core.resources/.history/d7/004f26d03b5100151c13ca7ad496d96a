@@ -1,0 +1,14 @@
+var Person = (function(a,b) {
+	var name = a || "";
+	
+	return {
+		comp: b || "",
+		getName: function() {
+			return name;
+		},
+		setName: function(n) {
+			name = n;
+		}
+	}
+	
+})();
