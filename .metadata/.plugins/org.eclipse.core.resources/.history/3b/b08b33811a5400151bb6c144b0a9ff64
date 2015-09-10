@@ -1,0 +1,18 @@
+"use strict";
+
+(function() {
+	var lastet = function() {
+		function forsinketUtskrift(tekst) {
+			window.setTimeout((function(arg) { 
+				return function() { 
+					window.alert(arg); 
+				}; 
+			})(tekst), 1000);
+		}
+		forsinketUtskrift("En liten utskrift");
+	}
+	
+	window.addEventListener('load', lastet, false);
+})();
+
+

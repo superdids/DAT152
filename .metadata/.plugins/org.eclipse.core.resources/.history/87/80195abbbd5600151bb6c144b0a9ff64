@@ -1,0 +1,30 @@
+//Regex
+
+//\( \) - match TEGNENE parentes
+//(sin|cos) - gruppering, match forekomsten sin eller cos
+//[] - finn forekomsten av ett tegn her
+
+
+(function() {
+	var reg = /(sin|cos)\s*\([.0-9]+\)/i;
+	//inne i [] kontruksjonen betraktes spesialtegnene som
+	//vanlige tegn -> 
+	//	. representerer ikke lenger et vilkårlig tegn
+	// \ representerer ikke lenger "escape" for et tegn
+	// ^ annoterer IKKE om det kommer først i listen
+	console.log(reg.test("sin(0.9)"));
+})();
+
+
+(function() {
+	//matcher 3 tegn, første og tredje tegn er SAMME siffer
+	var reg = /(\d).\1/; 
+
+
+	console.log(reg.test("999"));
+	console.log(reg.test("1a1"));
+})();
+
+(function() {
+	
+})();

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/rainbow-custom.min.js"></script>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<h1>Oppgave 1</h1>
+Det regulære uttrykket:
+<pre><code data-language="javascript">var regUttrykk = /\s+\w+\s+/</code></pre>
+<p>Matcher mønstre som starter med minst ett mellomrom, etterfulght av minst en ikke-bokstav,
+og deretter etterfulgt av minst ett mellomrom. </p>
+
+
+</body>
+</html>

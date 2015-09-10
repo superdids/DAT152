@@ -1,0 +1,14 @@
+"use strict";
+
+(function() {
+	var lastet = function() {
+		function forsinketUtskrift(tekst) {
+			window.setTimeout(function() { window.alert(tekst); }, 10000);
+		}
+		forsinketUtskrift("En liten utskrift");
+	}
+	
+	window.addEventListener('load', lastet, false);
+})();
+
+

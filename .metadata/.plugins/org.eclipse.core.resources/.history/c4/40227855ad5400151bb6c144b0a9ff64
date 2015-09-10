@@ -1,0 +1,15 @@
+"use strict";
+
+function AJAXConnection(url){
+  this._url = url || null;
+  this.onsuccess = function() {window.alert("Suksess")};
+  this.onerror = function() {this.response;};
+}
+
+AJAXConnection.prototype.get = function(logId) {
+	var httprequest = new XMLHttpRequest();
+	
+	var url = this._url + "/" + logId;
+	
+	httprequest.open("GET", url, true);
+}

@@ -1,0 +1,57 @@
+"use strict";
+
+function Person() {
+	this._fornavn = null;
+	this._etternavn = null;
+	this._telefonnummer = new Array();
+	this._epost = new Array();
+}
+
+Person.prototype.getFornavn = function() {
+	return this._fornavn;
+}
+
+Person.prototype.getEtternavn = function() {
+	return this._etternavn;
+}
+
+Person.prototype.getTelefonnummer = function() {
+	return this._telefonnummer;
+}
+
+Person.prototype.getEpost = function() {
+	return this._epost;
+}
+
+Person.prototype.setData = function(data) {
+	
+}
+
+function validate(data) {
+	
+	var regNavn = /[a-zæøå]+\s[a-zæøå]+/i;
+	var regTlf = /(\d\s*\d){4,}(,|;|)/g;
+	var regEpost = /[a-z][a-z._]+@[a-z]+\.[a-z]+/ig;
+	
+//	var regFull = new RegExp(regNavn+regTlf+regEpost);
+	
+	var tmp, navn, 
+	telefonnummer = new Array(), 
+	epost = new Array();
+	if (tmp = regNavn.exec(data)) navn = tmp;
+	
+	
+	while(tmp = regTlf.exec(data)) {
+		console.log(tmp);
+		tmp = tmp[0];
+		tmp = tmp.replace(/\s/g, "");
+		telefonnummer.push(tmp);
+	}
+	
+//	alert(telefonnummer);
+//	for(var x in telefonnummer) console.log(telefonnummer[x]);
+
+//	var tmp;
+//	while(tmp = regNavn.exec(data)) console.log(tmp);
+	
+}

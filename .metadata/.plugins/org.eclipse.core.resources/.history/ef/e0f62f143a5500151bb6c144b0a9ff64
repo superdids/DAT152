@@ -1,0 +1,43 @@
+//tre metoder som kan benyttes til å gi this mening
+//* bind - lar oss kjøre ny metode og spesifisere hva som skal refereres av this
+
+function f() {
+	
+}
+
+var g = f.bind(/*kontekst*/);
+
+g(); // kjøres ed "kontekst" som kontekst
+
+(function() {
+	
+	function Medlem(fornavn, etternavn) {
+		this._fornavn = fornavn;
+		this._etternavn = etternavn;
+	}
+	
+	Medlem.prototype.visData = function() {
+		window.alert(this._fornavn + " " + this._etternavn);
+		window.alert(this);
+	}
+	
+	function lastet() {
+		var m = new Medlem("Ole", "olsen");
+		var btn = document.getElementById('btn');
+//		btn.addEventListener("click", m.visData.bind(m) ,false);
+		btn.addEventListener("click", m.visData ,false); //undefined!
+	}
+	
+	window.addEventListener("load", lastet, false);
+})();
+
+
+//* call 
+//*capply
+
+
+
+
+
+
+

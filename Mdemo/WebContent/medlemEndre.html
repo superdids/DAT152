@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Mservice, updateMember</title>
+<style type="text/css">
+th,td {text-align: left}
+th,td {padding: 0 5px}
+table {border-collapse: collapse}
+form { margin-top: 1em}
+legend { color: red}
+</style>
+<script type="text/javascript" src="skript/config.js"></script>
+<script type="text/javascript" src="skript/ajax/ajax.js"></script>
+
+<script type="text/javascript">
+"use strict";
+
+(function () {
+	
+  var tElm = null;
+  var load = function () {
+  	document.getElementById("updateMember").addEventListener("click",updateMember,false);
+  	tElm = document.forms[0].getElementsByTagName('table')[0];
+  };
+  
+  var updateMember = function(e) {
+    var memberId = tElm.rows[0].cells[1].getElementsByTagName('input')[0].value;
+    var url = config.servicesPath + "/medlem";
+    var member = {
+      'firstname': tElm.rows[1].cells[1].getElementsByTagName('input')[0].value,
+      'lastname': tElm.rows[2].cells[1].getElementsByTagName('input')[0].value,
+      'address': tElm.rows[3].cells[1].getElementsByTagName('input')[0].value,
+      'phone': tElm.rows[4].cells[1].getElementsByTagName('input')[0].value
+    };
+    var ajax = new AJAXConnection(url);
+    ajax.onsuccess = viewMessage;
+	ajax.put([memberId],{'member': member});
+  };
+  
+  var viewMessage = function(m) {
+    document.getElementById("svar").textContent=m;
+  };
+  window.addEventListener("DOMContentLoaded",load,false);
+})()
+</script>
+</head>
+<body>
+<h1>put /medlem/{memberId}</h1>
+<form>
+<table>
+<tr><th>memberId:</th><td><input type="text" name="medlemId" size="3" value="0" /></td></tr>
+<tr><th>fornavn:</th><td><input type="text" name="fornavn" /></td></tr>
+<tr><th>etternavn:</th><td><input type="text" name="etternavn" /></td></tr>
+<tr><th>adresse:</th><td><input type="text" name="adresse" /></td></tr>
+<tr><th>telefon:</th><td><input type="text" name="telefon" /></td></tr>
+</table>
+<div><button type="button" id="updateMember">Oppdater medlem</button></div>
+</form>
+
+<p>Resultat:</p>
+<div id="svar"></div>
+</body>
+</html>

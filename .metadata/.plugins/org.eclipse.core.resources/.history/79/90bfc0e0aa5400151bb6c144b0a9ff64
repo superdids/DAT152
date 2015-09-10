@@ -1,0 +1,15 @@
+(function() {
+
+	function lastet() {
+		document.getElementById("newMember").addEventListener("click", newMember, false);
+		var httprequest = new XMLHttpRequest();
+		
+		
+	};
+	
+	function newMember() {
+		//TODO
+	}
+	
+	window.addEventListener("DOMContentLoaded", lastet, false);
+})();

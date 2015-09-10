@@ -1,0 +1,15 @@
+function Person() {
+	
+}
+
+Person.prototype.getFornavn() {
+	return _fornavn;
+}
+
+Person.prototype.getEtternavn() {
+	return _etternavn;
+}
+
+Person.prototype.getTelefonnummer() {
+	return _telefonnummer;
+}

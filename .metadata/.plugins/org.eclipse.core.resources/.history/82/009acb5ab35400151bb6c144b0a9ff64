@@ -1,0 +1,34 @@
+"use strict";
+
+(function() {
+
+	function lastet() {
+		document.getElementById("newMember").addEventListener("click", newMember, false);
+		
+		var url = servicesPath.path + "/endringer";
+		var ajax = new AJAXConnection(url);
+		ajax.onsuccess = members;
+		ajax.get(-1);
+	
+	};
+	
+	function members(m) {
+
+		var members = {};
+		members = JSON.parse(m);
+		members = members.updates;
+		alert(members);
+
+		
+		for(var key in members) {
+			console.log(key);
+		}
+	}
+	
+	function newMember() {
+		//TODO
+		alert(3);
+	}
+	
+	window.addEventListener("DOMContentLoaded", lastet, false);
+})();

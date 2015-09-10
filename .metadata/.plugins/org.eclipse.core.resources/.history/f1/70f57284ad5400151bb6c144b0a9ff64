@@ -1,0 +1,29 @@
+"use strict";
+
+function AJAXConnection(url){
+  this._url = url || null;
+  this.onsuccess = function() {window.alert("Suksess")};
+  this.onerror = function() {this.response;};
+}
+
+AJAXConnection.prototype.get = function(logId) {
+	var httprequest = new XMLHttpRequest();
+	
+	var url = this._url + "/" + logId;
+	
+	httprequest.open("GET", url, true);
+	
+	var thisObj = this;
+	
+	httprequest.onreadystatechange = function() {
+		if(httprequest.readyState == 4) {
+			if(httprequest.status == 200) {
+				if (this.onsucccess) {
+					alert(httprequest.responseText);
+				} else {
+					this.onerror(httprequest);
+				}
+			}
+		}
+	}
+}

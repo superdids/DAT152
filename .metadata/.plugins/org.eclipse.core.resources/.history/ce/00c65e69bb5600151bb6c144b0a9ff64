@@ -1,0 +1,7 @@
+//Regex
+
+//\( \) - match TEGNENE parentes
+//(sin|cos) - gruppering, match forekomsten sin eller cos
+//[] - finn forekomsten av ett tegn her
+
+var reg = /(sin|cos)\s*\([.0-9]+\)/i;

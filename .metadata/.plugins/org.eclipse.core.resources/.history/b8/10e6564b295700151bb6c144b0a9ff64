@@ -1,0 +1,39 @@
+"use strict";
+
+function Person() {
+	this._fornavn = null;
+	this._etternavn = null;
+	this._telefonnummer = new Array();
+	this._epost = new Array();
+}
+
+Person.prototype.getFornavn = function() {
+	return this._fornavn;
+}
+
+Person.prototype.getEtternavn = function() {
+	return this._etternavn;
+}
+
+Person.prototype.getTelefonnummer = function() {
+	return this._telefonnummer;
+}
+
+Person.prototype.getEpost = function() {
+	return this._epost;
+}
+
+Person.prototype.setData = function(data) {
+	
+}
+
+function validate(data) {
+	
+	
+	var regTlf = /(\d\s*\d){4,}(,|;|\s)/g;
+	
+	alert(regTlf.exec(data));
+//	var tmp;
+//	while(tmp = regTlf.exec(data)) console.log(tmp);
+	
+}

@@ -1,8 +1,0 @@
-package no.hib.dat152.resource;
-
-public class MyApplication extends ResourceConfig {  
-    public MyApplication() {
-        register(JacksonFeature.class);
-        packages("thepackage.of.your.resources");
-    }
-}

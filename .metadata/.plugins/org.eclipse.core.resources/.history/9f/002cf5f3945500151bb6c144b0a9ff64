@@ -1,0 +1,7 @@
+(function() {
+	function lastet() {
+		var regUttrykk = \/s+\w+\s+/;
+	}
+	
+	window.addEventListener("load", lastet, false);
+})();

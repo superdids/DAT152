@@ -1,0 +1,8 @@
+function Person() {
+	
+}
+
+Person.prototype.getFornavn() {
+	return _fornavn;
+}
+

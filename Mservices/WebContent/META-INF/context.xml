@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>         
+   <Resource name="jdbc/DAT152_Memberlist" auth="Container"
+       type="javax.sql.DataSource" 
+       username="dat152AJAX" password="kjUyhg54RRp"
+       driverClassName="org.apache.derby.jdbc.EmbeddedDriver"
+       factory="org.apache.commons.dbcp.BasicDataSourceFactory"
+       url="jdbc:derby:memory:DAT152_Memberlist;create=true"
+       />
+</Context>

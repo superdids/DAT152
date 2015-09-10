@@ -1,0 +1,21 @@
+(function() {
+
+	function lastet() {
+		document.getElementById("newMember").addEventListener("click", newMember, false);
+		var httprequest = new XMLHttpRequest();
+		xml.onreadystatechange = function() {
+			if(this.readystate == 4) {
+				
+			}
+		}
+		
+		httprequest.open("GET", servicesPath.path+"/-1", true);)
+		
+	};
+	
+	function newMember() {
+		//TODO
+	}
+	
+	window.addEventListener("DOMContentLoaded", lastet, false);
+})();

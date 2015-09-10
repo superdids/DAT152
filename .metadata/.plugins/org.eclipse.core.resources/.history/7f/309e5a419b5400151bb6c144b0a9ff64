@@ -1,0 +1,5 @@
+"use strict";
+
+var config = {
+  servicesPath: 'localhost:8080/Mservices/data'  
+};

@@ -1,0 +1,13 @@
+"use strict";
+
+
+var url = "http://localhost:8080/Mservices/data/endringer";
+var ajax = new AJAXConnection(url);
+
+url += "/-1";
+
+var httpRequest = new XMLHttpRequest();
+
+httprequest.open('GET', url, true);
+
+

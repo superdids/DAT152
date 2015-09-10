@@ -135,7 +135,6 @@ var timerDemo = {
 			setTimeout(this.visThis, 2000);
 		},
 		visThis: function() {
-//			console.log("Oppgave 10");
 			console.log(this);
 		}
 };
@@ -215,7 +214,8 @@ function oppgave14() {
 	var res = document.getElementById('oppgave14res');
 	res.innerHTML = res.innerHTML.split(":")[0] + ":";
 	if(date != undefined) {
-		var dag = ["Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag"][date.getDay()];
+		
+		var dag = ["Søndag", "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag"][date.getDay()];
 		res.innerHTML += " " + dag;
 	}
 }
@@ -262,7 +262,7 @@ function computeDate(d,m,y) {
 		dd.style.color = "red";
 	}
 
-	var date = new Date(year, month, 0);
+	var date = new Date(year, month-1, 0);
 	if(day > date.getDate()) {
 		invalid = true;
 		dd.style.color = "red";
@@ -374,10 +374,124 @@ function oppgave18(a) {
 function oppgave20() {
 	var primitivStreng = "abc";
 	var objektStreng = new String("abc");
-	alert("Primitive type: " + typeof primitivStreng);
-	alert("Instance of String? " + (primitivStreng instanceof String));
-	alert("Object type: " + typeof objektStreng);
-	alert("Instance of String? " + (objektStreng instanceof String));
+	var ret ="Primitive type: " + typeof primitivStreng + "\n"
+	+ "Instance of String? " + (primitivStreng instanceof String) + "\n"
+	+ "Object type: " + typeof objektStreng + "\n"
+	+ "Instance of String? " + (objektStreng instanceof String);
+	alert(ret);
 }
+
+//Oppgave 21
+function oppgave21() {
+	var stringMethods = new Array(); var pos = -1;
+	stringMethods[++pos] = "\"abc\".charAt(1) == 'b' ? " + ("abc".charAt(1) == 'b');
+	stringMethods[++pos] = "\"abc\".charCodeAt(1) == 98 ? " + ("abc".charCodeAt(1) == 98);
+	stringMethods[++pos] = "\"abc\".concat(\"def\") == \"abcdef\" ? " + ("abc".concat("def") == "abcdef");
+	stringMethods[++pos] = "\"carbag\".indexOf(\"car\") != -1 ? " + ("carbag".indexOf("car") != -1);
+	stringMethods[++pos] = "\"carbag\".indexOf(\"car\", 1) == -1 ? " + ("carbag".indexOf("car", 1) == -1);
+	stringMethods[++pos] = "... And the rest is to be considered on exams. HAHA fuckit";
+	var tmp = "";
+
+	for(var str in stringMethods) tmp += stringMethods[str] + "\n";
+
+	alert(tmp);
+}
+
+//Oppgave 22
+var minMatte = {
+		summerInput: function(args) {
+			var sum = 0;
+			for(var x = 0; x < args.length; x++) {
+				sum += args[x];
+			}
+			return sum;
+		}
+};
+
+function oppgave22() {
+	var inputFromUser = prompt("Enter numbers separated by semicolons.", "1;3;4");
+	while((inputFromUser = validate(inputFromUser)) == "") 
+		inputFromUser = prompt("Invalid, try again. remember to separate by semicolons. NO WHITE SPACES!", inputFromUser); 
+
+
+	alert(minMatte.summerInput(inputFromUser));
+}
+
+function validate(input) {
+	if(input == null) return "";
+	input = input.split(";");
+
+	if(!input[length-1]) input.pop();
+
+	console.log(input[input.length-1]);
+
+	for(var x = 0; x < input.length; x++) {
+		if(isNaN((input[x] = parseInt(input[x])))) return "";
+
+	}
+	return input;
+}
+
+//Oppgave 23
+var minNettleser = {
+		nettlesere : ["Firefox", "Opera", "Internet Explorer",
+		              "Safari", "Chrome", "Camino", "Konqueror",
+		              "Arora", "Midori"],
+		              getAgent : function(agent) {
+		            	  return navigator.userAgent.toLowerCase().indexOf(agent.toLowerCase());
+		              },
+		              getNettleser : function() {
+		            	  
+		            	  var tmp = ""; // representing the server
+		            	  // maybe use -1 instead
+		            	  var y = -1; // representing the client
+		            	  var receiverIndex = -1;
+		            	  for(var x in this.nettlesere) {
+		            		  tmp = this.getAgent(this.nettlesere[x]);
+		            		  if(tmp > -1) {
+		            			  if(receiverIndex < 0 || receiverIndex > tmp) { 
+		            				  receiverIndex = tmp;
+		            				  y = x;
+		            			  }
+		            			  
+		            		  }
+		            	  }
+		            	if(y == -1) alert("not found");
+		            	else alert(this.nettlesere[y]);
+		              }
+};
+
+//Oppgave 24
+function Terning() {
+	this.tall = null;
+	this.trillTerning();
+}
+
+Terning.prototype.trillTerning = function() {
+	this.tall = Math.floor(Math.random() * 6) + 1;
+}
+
+Terning.prototype.visTerning = function() {
+	console.log(this.tall);
+}
+
+function oppgave24() {
+	var t = new Terning();
+	t.visTerning();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

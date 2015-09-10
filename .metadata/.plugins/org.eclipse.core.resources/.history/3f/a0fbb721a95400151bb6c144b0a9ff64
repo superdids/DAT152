@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Oppgave 1</title>
+</head>
+<body>
+<h1>Oppgave 1</h1>
+
+	<pre>zum awzum code</pre>
+	<h1>Medlemsliste</h1>
+	<table id="memberList">
+		<tr>
+			<th>Fornavn</th>
+			<th>Etternavn</th>
+			<th>Adresse</th>
+			<th>Telefon</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</table>
+</body>
+</html>

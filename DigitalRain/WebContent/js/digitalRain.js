@@ -6,10 +6,9 @@ var canvas, ctx, fontSize, cols;
 var symbols = "可な およびそのマクセシビリティビリティセシビリへの切りえロジのため".split("");
 
 var drops = [];
-//var bools = [];
 var toDim = [];
-//var count = [];
 var len = 20;
+
 function draw()
 {
 	for(var x = 0; x < drops.length; x++) {
@@ -18,7 +17,7 @@ function draw()
 
 			if(drops[x] - len >= 0) {
 				ctx.fillStyle = "black";
-				ctx.clearRect(x*fontSize, (drops[x]-len)*fontSize, fontSize, fontSize);
+				ctx.clearRect(x*fontSize, (drops[x]	-len)*fontSize, fontSize, fontSize);
 			} 
 			
 			ctx.fillStyle = "#01DF3A";
@@ -59,7 +58,7 @@ window.onload = function() {
 	canvas.height= screen.height;
 
 	ctx = canvas.getContext("2d"); 
-	fontSize = 20;
+	fontSize = 30;
 	cols = canvas.width/fontSize;
 	for(var x = 0; x < cols; x++) {
 //		bools[x] = false;

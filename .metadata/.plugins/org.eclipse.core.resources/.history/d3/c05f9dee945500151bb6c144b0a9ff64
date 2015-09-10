@@ -1,0 +1,7 @@
+(function() {
+	function lastet() {
+		
+	}
+	
+	window.addEventListener("load", lastet, false);
+})();

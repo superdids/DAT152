@@ -1,0 +1,14 @@
+(function() {
+
+	function lastet() {
+		document.getElementById("newMember").addEventListener("click", newMember, false);
+
+		
+	};
+	
+	function getUpdates() {
+		//TODO
+	}
+	
+	window.addEventListener("DOMContentLoaded", lastet, false);
+})();

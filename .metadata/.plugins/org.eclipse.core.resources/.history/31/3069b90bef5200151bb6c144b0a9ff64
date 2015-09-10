@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/fil.js"></script>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<title>Obligatorisk innlevering 1</title>
+</head>
+<body>
+
+	<pre>zum awzum code < </pre>
+	<h1>Medlemsliste</h1>
+	<table>
+		<tr>
+			<th>Fornavn</th>
+			<th>Etternavn</th>
+			<th>Adresse</th>
+			<th>Telefon</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</table>
+
+</body>
+</html>

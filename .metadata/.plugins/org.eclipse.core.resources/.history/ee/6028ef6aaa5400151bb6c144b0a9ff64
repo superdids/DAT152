@@ -1,0 +1,8 @@
+(function() {
+
+	var lastet = function() {
+		document.getElementById("newMember").addEventListener("click", getUpdates, false);
+	};
+	
+	window.addEventListener("DOMContentLoaded", lastet, false);
+})();

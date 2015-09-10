@@ -37,11 +37,48 @@ var p2 = Person("c", "d");
 //Liste av observers bør være HTML objekter, da javascript kan oppdatere
 //disse automatisk 
 
-//Levende DOM datastruktur? 
+//Levende DOM datastruktur? Finn ut hva .call(args) og bind(Object) gjør
+
+// func.call(Object) kjører med Object som kontekst/this
+// func.bind(Object) utfører det samme som call UTEN å KJØRE func
+
+//Events:
+//* DOMContentLoaded: documentet er ferdig lastet, uten å vente på
+//stylesheets, bilder mm.
+//* load: dokument fullstendig ferdiglastet.
 
 
+//Bruk av bind:
+var x = 9;
+var module = {
+		x: 81,
+		getX: function() {
+			return this.x;
+		}
+};
+
+//alert(this.module.getX());
 
 
+var retX = module.getX;
+//alert(this.retX());
+alert(retX.call(this));
 
+var get = retX.bind(module);
+
+alert(get());
+
+//Publisher-Subscriber ("desentralisert")
+//Ligner på observer pattern - bruker en "eventchannel" mellom
+//observatører av hendelse og objekt som trigger hendelse
+//Hendelser her er ikke DOM-hendelser, men hendelser gitt av
+//applikasjonen
+
+//Mediator pattern ("sentralisert")
+//Reduserer kommunikasjonskanaler fra mange-til-mange til mange-til-en
+//I mediator pattern kommuniserer komponenter gjennom en sentral
+//komponent. 
+
+//Hvordan avkoble et "setInterval"?
 
 

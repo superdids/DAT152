@@ -1,0 +1,8 @@
+(function() {
+	function lastet() {
+		var regUttrykk = /\s+\w+\s+/;
+		console.log("%".search(regUttrykk));
+	}
+	
+	window.addEventListener("load", lastet, false);
+})();

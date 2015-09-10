@@ -1,0 +1,94 @@
+package no.hib.dat152.services;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import no.hib.dat152.dao.MDAO;
+import no.hib.dat152.dao.jdbc.MDAOImpl;
+import no.hib.dat152.model.Member;
+import no.hib.dat152.model.UpdatedMember;
+import no.hib.dat152.model.Updates;
+
+public class Mservice {
+
+	@Path("/endringer/{logId}")
+  @GET
+  @Produces(MediaType.APPLICATION_JSON )
+	public Updates getUpdates (@PathParam("logId") Integer logId) {
+		Updates updates=null;
+		try {
+	    if (logId == null) throw new Exception("Parameter for logId mangler.");
+	    MDAO memberDAO = new MDAOImpl();
+	    updates = memberDAO.getUpdates(logId);
+	    updates.setStatus(true);
+		} catch (Exception e) {
+		  updates=new Updates();
+		  updates.setStatus(false);
+		  System.out.println(e);
+		}
+		return updates;
+	}
+	
+	@Path("/medlem/{memberId}")
+	@DELETE
+	@Produces(MediaType.APPLICATION_JSON )
+	public UpdatedMember deleteMember(@PathParam("memberId") Integer memberId) {
+	  UpdatedMember deletedMember = new UpdatedMember();
+    try {
+      if (memberId== null) throw new Exception("Parameter for memberId mangler.");
+      if (memberId <= 0) throw new Exception("Parameter for memberId har feil verdi."); 
+      MDAO memberDAO = new MDAOImpl();
+      memberDAO.deleteMember(memberId);
+      deletedMember.setStatus(true);
+
+      deletedMember.setMemberId(memberId);
+    } catch (Exception e) {
+      System.out.println(e);
+    }
+	  return deletedMember;
+	}
+	
+	 @Path("/medlem")
+	 @POST
+	 @Produces(MediaType.APPLICATION_JSON)
+	 @Consumes(MediaType.APPLICATION_JSON)
+	 public UpdatedMember addMember(Member member) {
+	    UpdatedMember newMemberInfo = new UpdatedMember();
+	    try {
+	      MDAO memberDAO = new MDAOImpl();
+	      Integer memberId = memberDAO.newMember(member);
+	      newMemberInfo.setStatus(true);
+	      newMemberInfo.setMemberId(memberId);
+	    } catch (Exception e) {
+	      System.out.println(e);
+	    }
+	    return newMemberInfo;
+	  }
+	 
+   @Path("/medlem/{memberId}")
+   @PUT
+   @Produces(MediaType.APPLICATION_JSON)
+   @Consumes(MediaType.APPLICATION_JSON)
+   public UpdatedMember updateMember(@PathParam("memberId") Integer memberId, Member member) {
+      UpdatedMember newMemberInfo = new UpdatedMember();
+      try {
+        if (memberId == null) throw new Exception("Feil memberId");
+        if (memberId < 1) throw new Exception("Feil memberId");
+        member.setMemberId(memberId);
+        MDAO memberDAO = new MDAOImpl();
+        memberDAO.updateMember(member);
+        newMemberInfo.setStatus(true);
+        newMemberInfo.setMemberId(memberId);
+      } catch (Exception e) {
+        System.out.println(e);
+      }
+      return newMemberInfo;
+    }
+}

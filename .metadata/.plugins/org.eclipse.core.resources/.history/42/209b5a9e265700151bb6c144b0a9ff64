@@ -1,0 +1,28 @@
+"use strict";
+
+function Person() {
+	this._fornavn = null;
+	this._etternavn = null;
+	this._telefonnummer = new Array();
+	this._epost = new Array();
+}
+
+Person.prototype.getFornavn() {
+	return this._fornavn;
+}
+
+Person.prototype.getEtternavn() {
+	return this._etternavn;
+}
+
+Person.prototype.getTelefonnummer() {
+	return this._telefonnummer;
+}
+
+Person.prototype.getEpost() {
+	return this._epost;
+}
+
+Person.prototype.setData(data) {
+	
+}

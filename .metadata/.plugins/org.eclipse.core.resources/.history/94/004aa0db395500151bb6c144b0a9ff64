@@ -1,0 +1,36 @@
+//tre metoder som kan benyttes til å gi this mening
+//* bind - lar oss kjøre ny metode og spesifisere hva som skal refereres av this
+
+function f() {
+	
+}
+
+var g = f.bind(/*kontekst*/);
+
+g(); // kjøres ed "kontekst" som kontekst
+
+(function() {
+	
+	function Medlem(fornavn, etternavn) {
+		this._fornavn = fornavn;
+		this._etternavn = etternavn;
+	}
+	
+	function lastet() {
+		var btn = document.getElementById('btn');
+		btn.addEventListener("click",  ,false);
+	}
+	
+	window.addEventListener("DOMContentLoaded", lastet, false);
+})();
+
+
+//* call 
+//*capply
+
+
+
+
+
+
+

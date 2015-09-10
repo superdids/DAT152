@@ -1,0 +1,4 @@
+//Regex
+
+//\( \) - match TEGNENE parentes
+//(sin|cos) - gruppering, match forekomsten sin eller cos

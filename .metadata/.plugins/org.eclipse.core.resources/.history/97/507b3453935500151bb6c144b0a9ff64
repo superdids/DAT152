@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="rainbow-custom-min.js"></script>
+</head>
+<body>
+
+<h1>Oppgave 1</h1>
+Det regulære uttrykket:
+<pre>var regUttrykk = /\s+\w+\s+/</pre>
+
+
+</body>
+</html>

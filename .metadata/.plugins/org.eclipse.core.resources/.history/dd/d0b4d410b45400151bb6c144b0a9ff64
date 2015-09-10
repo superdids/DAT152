@@ -1,0 +1,51 @@
+"use strict";
+
+(function() {
+
+	function lastet() {
+		document.getElementById("newMember").addEventListener("click", newMember, false);
+		
+		var url = servicesPath.path + "/endringer";
+		var ajax = new AJAXConnection(url);
+		ajax.onsuccess = members;
+		ajax.get(-1);
+	
+	};
+	
+	function members(m) {
+
+		var members = {};
+		members = JSON.parse(m);
+		members = members.updates;
+//		alert(members);
+
+		alert(JSON.stringify(members));
+		var table = document.getElementById("memberList");
+		
+//		var pos = 0;
+//		for(var x = 0; x < res.length; x++) {
+//			var row = table.insertRow(++pos);
+////			row.id = 
+//			
+//			var cell1 = row.insertCell(0);
+//			var cell2 = row.insertCell(1);
+//			var cell3 = row.insertCell(2);
+//			var cell4 = row.insertCell(3);
+//			var cell5 = row.insertCell(4);
+//			
+//			cell1.innerHTML = members[x].
+//			
+//		}
+		
+//		for(var key in members) {
+//console.log(2);
+//		}
+	}
+	
+	function newMember() {
+		//TODO
+		alert(3);
+	}
+	
+	window.addEventListener("DOMContentLoaded", lastet, false);
+})();

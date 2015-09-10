@@ -1,0 +1,19 @@
+Mservices uses an Embedded Derby database.
+
+The database is created in memory every time the server start, but will need a folder where to write the
+derby log. The top directory of the derby database must be set on the TomEE server. Locate file
+Servers/TomEE at localhost-config/catalina.properties and add to the bottom:
+derby.system.home=some_path_on_your_computer
+
+If the database should be accessible from a normal Java application, open Project/Properties and locate
+Run/Debug settings. Mark the project and click the Edit button. Open pane Arguments and add to
+VM Arguments
+-Dderby.system.home=the_same_path_as_above
+
+If you would like to keep the database between restarts of the server, replace the connection URL in the file
+Mservices/WebContent/META-INF/context.xml
+Replace
+       url="jdbc:derby:memory:DAT152_Memberlist;create=true"
+with
+       url="jdbc:derby:DAT152_Memberlist;create=true"
+

@@ -1,0 +1,23 @@
+(function() {
+
+	function lastet() {
+		document.getElementById("newMember").addEventListener("click", newMember, false);
+		var httprequest = new XMLHttpRequest();
+		httprequest.onreadystatechange = function() {
+			if(this.readystate == 4) {
+				var res = JSON.parse(httprequest.responseText);
+				alert(rest);
+			}
+		}
+		
+		httprequest.open("GET", servicesPath.path+"/-1", true);
+		httprequest.send();
+		
+	};
+	
+	function newMember() {
+		//TODO
+	}
+	
+	window.addEventListener("DOMContentLoaded", lastet, false);
+})();

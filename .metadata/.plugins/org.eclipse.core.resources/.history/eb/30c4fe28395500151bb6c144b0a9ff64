@@ -1,0 +1,19 @@
+//tre metoder som kan benyttes til å gi this mening
+//* bind - lar oss kjøre ny metode og spesifisere hva som skal refereres av this
+
+function f() {
+	
+}
+
+
+
+
+//* call 
+//*capply
+
+
+
+
+
+
+

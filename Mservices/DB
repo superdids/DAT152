@@ -1,0 +1,24 @@
+DBMS is Derby.
+
+
+Tabellene i databasen DAT152_Medlemsbase er laget ved følgende SQL.
+
+create table Memberlist.Member (
+memberId SMALLINT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+  firstname VARCHAR(64) NOT NULL,
+  lastname VARCHAR(64) NOT NULL,
+  address VARCHAR(64) NOT NULL,
+  phone VARCHAR(64) NOT NULL,
+  PRIMARY KEY (memberId));
+
+CREATE TABLE Memberlist.Log (
+  logId SMALLINT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+  memberId SMALLINT NOT NULL,
+  event CHAR(7),
+  PRIMARY KEY (logId));
+  
+CREATE INDEX memberId_index ON Memberlist.Log (memberId);
+
+INSERT INTO Memberlist.Member (firstname,lastname,address,phone) VALUES ('Ole','Olsen','Olsenbakken','');
+INSERT INTO Memberlist.Member (firstname,lastname,address,phone) VALUES ('Per','Persen','Persenbakken 77','1234546567');
+INSERT INTO Memberlist.Member (firstname,lastname,address,phone) VALUES ('Anne','Annesen','Annesvingen 44','6587655458');
