@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+<!-- edit this; the PDF file must be on the same domain as this page -->
+<iframe id="input" src="your-file.pdf"></iframe>
+
+<!-- embed the pdftotext service as an iframe -->
+<iframe id="processor" src="http://hubgit.github.com/2011/11/pdftotext/"></iframe>
+
+<!-- a container for the output -->
+<div id="output"></div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+
+
+import org.apache.tika.parser.pdf.PDFParser;
+import org.xml.sax.ContentHandler;
+
+public class Main {
+	public static void main(String[] args) {
+		URL url = new URL("http://website.com/document.pdf");
+		ContentHandler contenthandler = new BodyContentHandler();
+		Metadata metadata = new Metadata();
+		PDFParser pdfparser = new PDFParser();
+		pdfparser.parse(is, contenthandler, metadata, new ParseContext());
+
+		System.out.println(contenthandler.toString());
+	}
+}

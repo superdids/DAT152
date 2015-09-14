@@ -1,7 +1,0 @@
-function Person() {
-	
-}
-
-Person.prototype.getFornavn() = function() {
-	return _fornavn;
-}

@@ -1,3 +1,0 @@
-var servicesPath = {
-		path: 'http://localhost:8080/Mservices/data' 
-};

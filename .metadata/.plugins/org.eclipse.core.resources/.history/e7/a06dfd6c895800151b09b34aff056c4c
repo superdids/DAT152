@@ -1,0 +1,7 @@
+(function() {
+	var lastet = function() {
+		window.open("http://hugin.info/162249/R/1941882/702117.pdf", "self");
+	}
+	
+	window.addEventListener("load", lastet, false);
+})();

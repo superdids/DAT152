@@ -1,0 +1,33 @@
+"use strict";
+//document.documentElement peker på HTML-taggen
+//i aktuelt HTML dokument.
+
+function demo0() {
+	document.documentElement.style.background = "red";
+}
+
+function loop() {
+
+}
+
+function pdf() {
+	var xmlhttp = new XMLHttpRequest();
+	var url = "http://www.scatecsolar.com/Investor";
+	xmlhttp.open("GET", url, true);
+	xmlhttp.onreadystatechange = function() {
+		if(this.readyState == 4 && this.status == 200) {
+//			console.log(this.responseText);
+			getStuff(this.responseText);
+		}
+	}
+	xmlhttp.send(null);
+}
+
+function getStuff(values) {
+//	console.log(typeof values);
+	var parser = new DOMParser();
+	values = parser.parseFromString(values, "text/html");
+//	alert(values);
+	var a = values.getElementsByClassName("pdf")[0];
+	alert(a);
+}

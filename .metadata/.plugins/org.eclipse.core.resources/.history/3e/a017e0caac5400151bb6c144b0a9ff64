@@ -1,7 +1,0 @@
-"use strict";
-
-function AJAXConnection(url){
-  this._url = url || null;
-  this.onsuccess = function() {window.alert("Suksess")};
-  this.onerror = function() {this.response;};
-}

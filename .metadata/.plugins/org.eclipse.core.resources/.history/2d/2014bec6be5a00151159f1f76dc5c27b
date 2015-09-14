@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/lecEight.js"></script>
+</head>
+<body>
+
+
+<input type="button" onclick="demo0()" value="Click" />
+
+<!-- Det legges alltid en <tbody> tag rundt elementene
+inne i <table> taggen (implisitt) -->
+<table>
+
+</table>
+
+</body>
+</html>

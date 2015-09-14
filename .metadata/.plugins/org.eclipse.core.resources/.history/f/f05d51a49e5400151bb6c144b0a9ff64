@@ -1,6 +1,0 @@
-"use strict";
-
-
-var url = "http://localhost:8080/Mservices/data";
-var ajax = new AJAXConnection(url);
-

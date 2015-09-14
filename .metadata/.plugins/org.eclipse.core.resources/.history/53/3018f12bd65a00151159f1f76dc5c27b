@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/lecEight.js"></script>
+<script type="text/javascript" src="js/pdf.js"></script>
+<script type="text/javascript" src="js/pdf.worker.js"></script>
+</head>
+<body>
+
+
+<input type="button" onclick="demo0()" value="Click" />
+<input type="button" onclick="loop()" value="Click" />
+
+<input type="button" onclick="pdf()" value="View PDF" />
+
+<!-- Det legges alltid en <tbody> tag rundt elementene
+inne i <table> taggen (implisitt), med mindre mimetype er
+XML -->
+<table>
+
+</table>
+
+<div id="ta">
+
+</div>
+
+</body>
+</html>

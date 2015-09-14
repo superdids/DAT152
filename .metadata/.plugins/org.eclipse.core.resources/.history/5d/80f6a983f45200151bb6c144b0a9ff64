@@ -1,9 +1,0 @@
-(function() {
-	var lastet = function() {
-		function forsinketUtskrift(tekst) {
-			window.setTimeout("window.alert(tekst)", 10000);
-		}
-	}
-	
-	window.addEventListener('load', lastet, true);
-})();
