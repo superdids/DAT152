@@ -1,0 +1,15 @@
+"use strict";
+
+function Controller() {
+	
+}
+
+
+(function() {
+	function lastet() {
+		var gui = new GUIManager(window, -1);
+		refresh(gui);
+	}
+
+	window.addEventListener("DOMContentLoaded", lastet);
+})();

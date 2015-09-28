@@ -1,0 +1,7 @@
+"use strict";
+
+function Controller() {
+	
+}
+
+Controller.prototype.start = function() {¨}

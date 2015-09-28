@@ -1,0 +1,59 @@
+"use strict";
+
+var logId = {
+		value: -1	
+};
+
+(function() {
+	function lastet() {
+		refresh();
+	}
+
+	window.addEventListener("DOMContentLoaded", lastet);
+})();
+
+function refresh() {
+	window.setTimeout(function() {
+		var http = new HTTPOperations("/endringer", updateMemberList);
+		http.getMembersByLogId(logId.value);
+		console.log("hai");
+		refresh();
+	}, 2000);	
+}
+
+function updateMemberList(responseText) {
+	var obj = JSON.parse(responseText);
+//alert(obj.updates);
+	var obj = obj.updates;
+	logId.value = obj.logId;
+	
+	var table = document.getElementById("memberList");
+	var gui = new GUIManager(table, window);
+//	alert(obj.newMembers);
+	if(obj.newMembers) gui.createMembers(obj.newMembers);
+	if(obj.deletedMembers) gui.deleteMembers(obj.deletedMembers);
+	if(obj.updatedMembers) gui.updateMembers(obj.updatedMembers);
+}
+
+function buttonDelete(id) {
+	return function() {
+		var http = new HTTPOperations("/medlem", removeMember);
+		http.deleteMemberById(id);
+	}
+}
+
+function removeMember(responseText) {
+	var obj = JSON.parse(responseText);
+	obj = obj.updatedMember;
+	if(obj.status) {}
+	var table = document.getElementById("memberList");
+	var gui = new GUIManager(table);
+	gui.deleteMemberById(id);
+}
+
+function buttonEdit(id) {
+	return function() {
+		var table = document.getElementById("memberList");
+		var gui = new GUIManager(table);
+	}
+}

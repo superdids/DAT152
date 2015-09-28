@@ -1,0 +1,74 @@
+"use strict";
+
+function AJAXConnection(url){
+	this._url = url || null;
+	this.onsuccess = function() {console.log("Suksess")};
+//	this.onerror = function() {window.alert("fail");};
+	this.onerror = function() { console.log(this.response); };
+}
+
+AJAXConnection.prototype.get = function(logId) {
+	var httprequest = new XMLHttpRequest();
+
+	var url = this._url + "/" + logId;
+
+	httprequest.open("GET", url, true);
+
+	var thisObj = this;
+
+	httprequest.onreadystatechange = function() {
+		thisObj._dataReceived(httprequest);
+	};
+	if(this.onerror) {
+		httprequest.onerror = function() {
+			thisObj.onerror(httprequest);
+		};
+	}
+	
+	httprequest.send(null);
+}
+
+AJAXConnection.prototype.post = function(data) {
+	var httprequest = new XMLHttpRequest();
+
+	var url = this._url;
+
+	httprequest.open("POST", url, true);
+
+	var thisObj = this;
+
+	httprequest.onreadystatechange = function() {
+		thisObj._dataReceived(httprequest);
+	};
+	if(this.onerror) {
+		
+		httprequest.onerror = function() {
+			thisObj.onerror(httprequest);
+		};
+	}
+	httprequest.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+	console.log(httprequest);
+	httprequest.send(JSON.stringify(data));
+}
+
+
+AJAXConnection.prototype._dataReceived = function(httprequest) {
+	try {
+		if (httprequest.readyState == 4) { // Et dokument er ferdig lastet
+			if (httprequest.status == 200) { // Henting OK
+				if (this.onsuccess) this.onsuccess(httprequest.responseText);
+//				console.log(httprequest.responseText);
+//				alert(httprequest.responseText);
+			} else {
+				if (this.onerror) {
+					this.onerror(httprequest);
+					console.log(httprequest);
+//					console.log(httprequest);
+				}
+			}
+		}
+	} catch(e) {
+//		console.log("errar");
+		if (this.onerror) this.onerror();
+	}
+};

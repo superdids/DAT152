@@ -1,0 +1,19 @@
+body {
+	width: 50%;
+	float: left;
+}
+
+fieldset input {
+	float: right;	
+}
+
+div.p {
+	text-align: left;
+	width: 100px;
+	float: left;
+	font-weight: bold;
+}
+
+fieldset p {
+
+}

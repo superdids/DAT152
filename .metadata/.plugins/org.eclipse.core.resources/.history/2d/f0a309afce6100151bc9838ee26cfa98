@@ -1,0 +1,21 @@
+"use strict";
+
+function Controller(parent) {
+	this._parent = parent;
+	this._gui = new GUIManager(this.t, -1);
+	this._http = new HTTPOperations("/endringer", gui.show.bind(gui));
+}
+
+Controller.prototype.start = function() {
+	this._http.getMembersByLogId(this._gui.getLogId());
+	this.refresh(gui);
+}
+
+Controller.prototype.refresh = function(gui) {
+	this._parent.setTimeout(function() {
+		http.getMembersByLogId(gui.getLogId());
+		refresh(gui);
+	}, 2000);
+}
+
+

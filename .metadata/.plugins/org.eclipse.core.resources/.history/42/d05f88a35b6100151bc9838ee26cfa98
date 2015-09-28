@@ -1,0 +1,20 @@
+"use strict";
+
+function GUIManager(table) {
+	this._table = table;
+}
+
+GUIManager.prototype.createMembers = function(newMembers) {
+	for(var x = 0; x < newMembers.length; x++) {
+		var row = this._table.insertRow(-1);
+		row.id = "m1" + 
+	}
+}
+
+GUIManager.prototype.deleteMembers = function(deletedMembers) {
+	
+}
+
+GUIManager.prototype.updateMembers = function(updatedMembers) {
+	
+}

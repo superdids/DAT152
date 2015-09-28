@@ -1,0 +1,6 @@
+
+function Vindu(path) {
+	this._width = 100;
+	
+	this._path = path;
+}

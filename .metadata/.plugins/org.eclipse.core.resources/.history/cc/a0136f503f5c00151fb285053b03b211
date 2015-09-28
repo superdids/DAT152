@@ -1,0 +1,3 @@
+//GET data er del av URLen.
+//GET+DELETE -> xmlhttprequest.send(null);
+//POST+PUT -> xmlhttprequest.send(DATA);

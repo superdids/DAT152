@@ -1,0 +1,4 @@
+"use strict";
+function post(data) {
+	var ajax = new AJAXConnection
+}

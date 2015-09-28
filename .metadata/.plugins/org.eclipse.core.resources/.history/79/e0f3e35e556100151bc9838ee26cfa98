@@ -1,0 +1,22 @@
+"use strict";
+
+function HTTPOperations() {
+	this._url = config.servicesPath;
+}
+
+
+HTTPOperations.prototype.createMember = function(member) {
+	var url = this._url + "/medlem";
+}
+
+HTTPOperations.prototype.getMembersByLogId = function(logId) {
+	var url = this._url + "/endringer";
+}
+
+HTTPOperations.prototype.updateMemberById = function(id) {
+	var url = this._url + "/medlem";
+}
+
+HTTPOperations.prototype.deleteMemberById = function(id) {
+	
+}

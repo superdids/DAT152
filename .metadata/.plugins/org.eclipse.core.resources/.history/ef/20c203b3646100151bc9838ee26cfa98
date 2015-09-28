@@ -1,0 +1,116 @@
+"use strict";
+
+var logId = {
+		value: -1	
+};
+
+(function() {
+	function lastet() {
+		refresh();
+	}
+
+	window.addEventListener("DOMContentLoaded", lastet);
+})();
+
+function refresh() {
+	window.setTimeout(function() {
+		var http = new HTTPOperations("/endringer", updateMemberList);
+		http.getMembersByLogId(logId.value);
+		console.log("hai");
+		refresh();
+	}, 2000);	
+}
+
+function updateMemberList(responseText) {
+	var obj = JSON.parse(responseText);
+	var obj = obj.updates;
+	logId.value = obj.logId;
+
+	var table = document.getElementById("memberList");
+
+	var gui = new GUIManager(table, window);
+	if(obj.newMembers) gui.createMembers(obj.newMembers);
+	if(obj.deletedMembers) gui.deleteMembers(obj.deletedMembers);
+	if(obj.updatedMembers) gui.updateMembers(obj.updatedMembers);
+}
+
+function buttonDelete(id) {
+	return function() {
+		var http = new HTTPOperations("/medlem", removeMember);
+		http.deleteMemberById(id);
+	}
+}
+
+function buttonEdit(id) {
+	return function() {
+		var table = document.getElementById("memberList");
+		var gui = new GUIManager(table);
+	}
+}
+
+function removeMember(responseText) {
+	var obj = JSON.parse(responseText);
+	obj = obj.updatedMember;
+	if(obj.status) {
+		var table = document.getElementById("memberList");
+		var gui = new GUIManager(table);
+		gui.deleteMemberById(obj.memberId);
+	}
+}
+
+function updateMember(responseText) {
+	
+}
+
+function editMemberDialog(id) {
+	var div = document.getElementById("manageMember");
+	div.style = "display: inline";
+	var row = document.getElementById("m"+id);
+
+	function el(val) { return document.getElementById(val); };
+
+	var fields = inputs(id);
+	for(var x = 0; x < fields.length; x++) {
+		fields[x].value = row.cells[x];
+	}
+
+	document.getElementById("submitMember").onclick = function() {
+
+	}
+}
+
+function newMemberDialog() {
+	var div = document.getElementById("manageMember");
+	div.style = "display: inline";
+	var row = document.getElementById("m"+id);
+
+	function el(val) { return document.getElementById(val); };
+
+	var fields = inputs(id);
+	for(var x = 0; x < fields.length; x++) {
+		fields[x].value = "";
+	}
+
+	document.getElementById("submitMember").onclick = function() {
+		var http = HTTPOperations("/member", updateMember);
+		http.updateMember();
+	}
+}
+
+
+function inputs(id) {
+	function el(val) { return document.getElementById(val); };
+	
+	//see oppgave01.html under the div id="manageMember"
+	return [el("fName"), el("lName"), el("address"), el("phone")];
+}
+
+function toJSON(member) {
+	return {
+		"firstname": member[0].value,
+		"firstname": member[0].value,
+		"firstname": member[0].value,
+		"firstname": member[0].value
+	}
+}
+

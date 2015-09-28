@@ -1,0 +1,12 @@
+"use strict";
+var config = (function() {
+	return {
+		servicesPath: 'http://localhost:8080/Mservices/data' 
+	};
+})();
+{
+	 
+};
+function post(data) {
+	var ajax = new AJAXConnection
+}

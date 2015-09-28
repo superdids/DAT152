@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 5 elements to &apos;WebContent&apos;&#x0D;&#x0A;- Original project: &apos;Obl1&apos;&#x0D;&#x0A;- Destination element: &apos;WebContent&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     oppgave01.html&#x0D;&#x0A;     index.html&#x0D;&#x0A;     oppgave02.html&#x0D;&#x0A;     css&#x0D;&#x0A;     js" description="Copy elements" element1="WebContent/oppgave01.html" element2="WebContent/index.html" element3="WebContent/oppgave02.html" element4="WebContent/css" element5="WebContent/js" files="3" flags="589830" folders="2" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1442388049819" target="/Oblig1/WebContent" units="0" version="1.0"/>
+</session>

@@ -130,7 +130,7 @@
 
       <Context docBase="D:\GitRepositories\JavaScript\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="D:\GitRepositories\JavaScript\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Mservices" path="/Mservices" reloadable="true" source="org.eclipse.jst.jee.server:Mservices">         
    <Resource auth="Container" driverClassName="org.apache.derby.jdbc.EmbeddedDriver" factory="org.apache.commons.dbcp.BasicDataSourceFactory" name="jdbc/DAT152_Memberlist" password="kjUyhg54RRp" type="javax.sql.DataSource" url="jdbc:derby:memory:DAT152_Memberlist;create=true" username="dat152AJAX"/>
-</Context></Host>
+</Context><Context docBase="D:\GitRepositories\JavaScript\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Mdemo" path="/Mdemo" reloadable="true" source="org.eclipse.jst.jee.server:Mdemo"/><Context docBase="D:\GitRepositories\JavaScript\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Oblig1" path="/Oblig1" reloadable="true" source="org.eclipse.jst.jee.server:Oblig1"/><Context docBase="D:\GitRepositories\JavaScript\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Obligue" path="/Obligue" reloadable="true" source="org.eclipse.jst.jee.server:Obligue"/><Context docBase="D:\GitRepositories\JavaScript\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Oblague1" path="/Oblague1" reloadable="true" source="org.eclipse.jst.jee.server:Oblague1"/></Host>
     </Engine>
   </Service>
 </Server>

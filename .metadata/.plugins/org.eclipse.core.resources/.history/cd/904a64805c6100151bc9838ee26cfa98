@@ -1,0 +1,31 @@
+"use strict";
+
+function GUIManager(table) {
+	this._table = table;
+}
+
+GUIManager.prototype.createMembers = function(newMembers) {
+	for(var x = 0; x < newMembers.length; x++) {
+		var row = this._table.insertRow(-1);
+		row.id = "m" + newMembers[x].memberId;
+	}
+}
+
+GUIManager.prototype.deleteMembers = function(deletedMembers) {
+	
+}
+
+GUIManager.prototype.updateMembers = function(updatedMembers) {
+	
+}
+
+GUIManager.prototype.appendCells = function(row, member) {
+	var cells = new Array(6);
+	for(var x = 0; x < 6; x++) {
+		cells[x] = row.insertCell(x);
+	}
+
+	cells[0].innerHTML = member.firstname;
+	cells[1].innerHTML = member.lastname;
+	cells[2].innerHTML = member.address;
+}

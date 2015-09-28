@@ -1,0 +1,17 @@
+"use strict";
+
+function GUIManager() {
+	
+}
+
+GUIManager.prototype.createMembers = function(newMembers) {
+	
+}
+
+GUIManager.prototype.updateMembers = function(deletedMembers) {
+	
+}
+
+GUIManager.prototype.updateMembers = function(updatedMembers) {
+	
+}

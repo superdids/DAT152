@@ -1,0 +1,11 @@
+"use strict";
+
+function Controller() {
+	this._gui = new GUIManager(-1);
+	this._http = new HTTPOperations("/endringer", this.)
+}
+
+Controller.prototype.start = function() {
+	
+}
+

@@ -1,0 +1,2 @@
+//GET+DELETE -> xmlhttprequest.send(null);
+//POST+PUT -> xmlhttprequest.send(DATA);

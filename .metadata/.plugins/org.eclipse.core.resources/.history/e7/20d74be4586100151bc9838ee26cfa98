@@ -1,0 +1,28 @@
+"use strict";
+
+var logId = {
+	value: -1	
+};
+
+(function() {
+	function lastet() {
+		console.log("hai");
+		function refresh() {
+			window.setTimeout(function() {
+				var http = new HTTPOperations("/endringer", updateLogId);
+				http.getMembersByLogId(logId.value);
+				console.log("hai");
+				refresh();
+			}, 5000);	
+		}
+		
+		function updateLogId(responseText) {
+			var obj = JSON.parse(responseText);
+			obj = obj.updates;
+			logId.value = obj.logId;
+			console.log(logId.value);
+		}
+	}
+
+	window.addEventListener("DOMContentLoaded", lastet);
+})();

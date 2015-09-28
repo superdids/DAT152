@@ -1,0 +1,25 @@
+"use strict";
+
+var logId = {
+		value: "-1"
+};
+
+(function() {
+	function lastet() {
+		var url = config.servicesPath + "/endringer";
+		var ajax = new AJAXConnection();
+		ajax.onsuccess = updateTable;
+		ajax.get([logId]);
+	}
+
+	window.addEventListener("DOMContentLoaded", lastet);
+})();
+
+
+function updateTable(m) {
+	var table = document.getElementById("memberList");
+}
+
+function row(row, m) {
+	
+}

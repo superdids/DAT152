@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Legg til ny bruker</title>
+</head>
+<body>
+
+<table>
+<tr>
+<td>
+<p>Fornavn:</p>
+<input id="fName" 
+</td>
+<td>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

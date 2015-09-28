@@ -1,0 +1,13 @@
+"use strict";
+
+function Vindu(file) {
+	this._file = file;
+}
+
+Vindu.prototype.edit = function(id) {
+	
+}
+
+Vindu.prototype.create = function() {
+	
+}

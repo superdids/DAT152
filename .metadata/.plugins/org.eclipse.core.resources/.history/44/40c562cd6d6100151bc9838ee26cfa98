@@ -1,0 +1,19 @@
+"use strict";
+
+/**
+ * @author Didrik Emil Aubert
+ * Constructorfunction to manage single member elements.
+ */
+
+function MemberManager(table,member) {
+	this._table = table;
+	this._member = member;
+}
+
+MemberManager.prototype.updateMember = function(id) {
+	var row = document.getElementById("m"+id);
+	row.cells[0].innerHTML = this._member.firstname;
+	row.cells[1].innerHTML = this._member.lastname;
+	row.cells[2].innerHTML = this._member.address;
+	row.cells[3].innerHTML = this._member.phone;
+}

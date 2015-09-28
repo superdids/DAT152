@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Oppgave 1</title>
+
+<script type="text/javascript" src="js/ajax/ajax.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript" src="js/vindu.js"></script>
+<script type="text/javascript" src="js/oppgave01.js"></script>
+<script type="text/javascript">
+var v = null;
+window.onload = function(v) {
+	v = new Vindu ("oppgave01member.html", this);
+	v.open();
+}
+
+
+
+
+</script>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<h1>Oppgave 1</h1>
+
+	<h1>Medlemsliste</h1>
+	<table id="memberList">
+		<tr>
+			<th>Fornavn</th>
+			<th>Etternavn</th>
+			<th>Adresse</th>
+			<th>Telefon</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</table>
+	
+	<input type="button" value="Legg til medlem" onclick="showCreate()"/>
+	<br />
+	<br />
+<!-- 	<div id="newMember" style="display: none"> -->
+		
+<!-- 			</div> -->
+</body>
+</html>

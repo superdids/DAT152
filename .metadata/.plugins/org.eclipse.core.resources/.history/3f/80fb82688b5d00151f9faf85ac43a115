@@ -1,0 +1,97 @@
+"use strict";
+
+function AJAXConnection(url){
+	this._url = url || null;
+	this.onsuccess = function() {console.log("Suksess")};
+//	this.onerror = function() {window.alert("fail");};
+	this.onerror = function() { console.log(this.response); };
+}
+
+AJAXConnection.prototype.get = function(logId) {
+	var httprequest = new XMLHttpRequest();
+
+	var url = this._url + "/" + logId;
+
+	httprequest.open("GET", url, true);
+
+	var thisObj = this;
+
+	httprequest.onreadystatechange = function() {
+		thisObj._dataReceived(httprequest);
+	};
+	if(this.onerror) {
+		httprequest.onerror = function() {
+			thisObj.onerror(httprequest);
+		};
+	}
+	
+	httprequest.send(null);
+}
+
+AJAXConnection.prototype.post = function(data) {
+	var httprequest = new XMLHttpRequest();
+
+	var url = this._url;
+
+	httprequest.open("POST", url, true);
+
+	var thisObj = this;
+
+	httprequest.onreadystatechange = function() {
+//		thisObj._dataReceived(httprequest);
+		try {
+			if(this.readyState == 4) {
+				console.log(this.readyState);
+				console.log(this.status);
+				if(this.status == 200) {
+//					if(thisObj.onsuccess) {
+					console.log(this.responseText);
+						thisObj.onsuccess(this.responseText);
+						console.log(100);
+//					}
+				}
+			}
+		} catch(e) {
+			console.log("errar");
+			if(thisObj.onerror) thisObj.onerror();
+		}
+	};
+	
+	if(this.onerror) {
+		httprequest.onerror = function() {
+			thisObj.onerror(httprequest);
+		};
+	}
+	httprequest.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+//	console.log(httprequest);
+	console.log(JSON.stringify(data));
+	httprequest.send(JSON.stringify(data));
+}
+
+
+AJAXConnection.prototype._dataReceived = function(httprequest) {
+//	console.log("asd: "+ httprequest);
+	try {
+		if (httprequest.readyState == 4) { // Et dokument er ferdig lastet
+			if (httprequest.status == 200) { // Henting OK
+				if (this.onsuccess) {
+					this.onsuccess(httprequest.responseText);
+					console.log("Data received!!");
+				}
+//				console.log(httprequest.responseText);
+//				alert(httprequest.responseText);
+			} else {
+				if (this.onerror) {
+					this.onerror(httprequest);
+					console.log(httprequest);
+//					console.log(httprequest);
+				}
+			}
+		} else {
+			console.log(httprequest.readyState);
+		}
+	} catch(e) {
+		console.log("I have this tiny error???");
+		if (this.onerror) this.onerror();
+	}
+};

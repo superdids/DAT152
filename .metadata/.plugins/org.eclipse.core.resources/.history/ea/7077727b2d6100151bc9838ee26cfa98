@@ -1,0 +1,71 @@
+"use strict";
+
+function Vindu(path, method, parent) {
+	this._width = 100;
+	this._height = 100;
+	this._path = path || null;
+	this._parent = parent || null;
+	this._method = method;
+}
+
+//this.document.getElementById("submitMember").onclick = function() {
+//	var data = do_me.call(thisObj, id);
+//	put(id,data, thisObj);
+//}	
+
+Vindu.prototype.open = function() {
+	try {
+		parent.window.open(this._path, 
+				"Vindu", 
+				"width=" + this._width,
+				"height=" + this.height);
+		(function(m) {
+			var lastet = function() {
+				document.getElementById("submitMember").onclick = function() {
+					
+				}
+			}
+			
+			
+		})(this._method);
+//				.then(function() {
+//					alert("døne!");
+//				}, function(e) {
+//					alert(e);
+//				});
+	} catch(e) {
+		console.log(e);
+	}
+}
+
+Vindu.prototype.close = function() {
+	try {
+		this.window.close();
+	} catch(e) {
+		console.log(e);
+	}
+}
+
+Vindu.prototype.update = function() {
+	this._parent.put(this.getValues());
+}
+
+Vindu.prototype.add = function() {
+	this._parent.post(this.getValues());
+}
+
+Vindu.prototype.getValues = function() {
+	var fName = document.getElementById("fName").value;
+	var lName = document.getElementById("fName").value;
+	var address = document.getElementById("address").value;
+	var phone = document.getElementById("fName").value;
+	
+	return {
+		"firstname": fName,
+		"lastname": lName,
+		"address": address,
+		"phone": phone
+	};
+}
+
+

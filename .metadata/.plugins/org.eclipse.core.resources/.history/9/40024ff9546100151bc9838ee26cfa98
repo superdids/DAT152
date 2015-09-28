@@ -1,0 +1,9 @@
+"use strict";
+
+function HTTPOperations() {
+	
+}
+
+HTTPOperations.prototype.createMember = function(member) {
+	
+}

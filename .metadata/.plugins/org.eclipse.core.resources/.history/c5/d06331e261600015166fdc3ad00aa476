@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+			<tr>
+				<td><b>Fornavn:</b></td>
+				<td><input type="text" id="fName" /></td>
+			</tr>
+			<tr>
+				<td><b>Etternavn:</b></td>
+				<td><input type="text" id="lName" /></td>
+			</tr>
+			<tr>
+				<td><b>Adresse:</b></td>
+				<td><input type="text" id="address" /></td>
+			</tr>
+			<tr>
+				<td><b>Telefonnummer:</b></td>
+				<td><input type="number" id="phone" /></td>
+			</tr>
+		</table>
+		<input type="button" onclick="submitValues()" value="Submit" />		
+		
+</body>
+</html>

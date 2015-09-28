@@ -1,0 +1,27 @@
+"use strict";
+
+function HTTPOperations(dynamic, func) {
+	this._url = config.servicesPath + dynamic;
+	this._func = func;
+	this._ajax = new AJAXConnection(this._url);
+	this._ajax.onsuccess = this._func;
+}
+
+
+HTTPOperations.prototype.createMember = function(member) {
+	var ajax = new AJAXConnection(url);
+	
+}
+
+HTTPOperations.prototype.getMembersByLogId = function(logId) {
+	var ajax = new AJAXConnection(url);
+
+}
+
+HTTPOperations.prototype.updateMemberById = function(id) {
+	
+}
+
+HTTPOperations.prototype.deleteMemberById = function(id) {
+	
+}

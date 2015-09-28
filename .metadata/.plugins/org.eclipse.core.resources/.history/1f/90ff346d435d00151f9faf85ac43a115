@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/urls.js"></script>
+<script type="text/javascript" src="js/test.js"></script>
+<script type="text/javascript" src="js/ajax/ajax.js"></script>
+<title>Oppgave 1</title>
+</head>
+<body>
+<h1>Oppgave 1</h1>
+
+	<h1>Medlemsliste</h1>
+	<table id="memberList">
+		<tr>
+			<th>Fornavn</th>
+			<th>Etternavn</th>
+			<th>Adresse</th>
+			<th>Telefon</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</table>
+	
+	<input type="button" value="Legg til medlem" onclick="showCreate()"/>
+	<br />
+	<br />
+	<div id="newMember" style="display: none">
+		<form id="params">
+			<fieldset>
+			<legend>Opprett nytt medlem</legend>
+				<div class="p">Fornavn:</div> <input type="text" name="fName" /></p>
+				<p>Etternavn: <input type="text" name="lName" /></p>
+			</fieldset>
+		</form>
+	</div>
+	
+	
+</body>
+</html>

@@ -1,0 +1,32 @@
+function Vindu(path, parent) {
+	this._width = 100;
+	this._height = 100;
+	this._path = path || null;
+	this._parent = parent || null;
+}
+
+Vindu.prototype.open = function() {
+	try {
+		this.window.open(this._path, 
+				"Vindu", 
+				"width=" + this._width,
+				"height=" + this.height);
+	} catch(e) {
+		console.log(e);
+	}
+}
+
+Vindu.prototype.close = function() {
+	try {
+		this.window.close();
+	} catch(e) {
+		console.log(e);
+	}
+}
+
+Vindu.prototype.get = function() {
+	
+}
+
+
+

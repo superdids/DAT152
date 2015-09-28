@@ -8,6 +8,7 @@ public class Member {
 	private String lastname;
 	private String address="";
 	private String phone="";
+
   private Integer memberId=null;
 	
 	public Member() {}

@@ -1,0 +1,17 @@
+"use strict";
+
+function GUIManager() {
+	
+}
+
+function(newMembers) {
+	
+}
+
+function deleteMembers(deletedMembers) {
+	
+}
+
+function updateMembers(updatedMembers) {
+	
+}

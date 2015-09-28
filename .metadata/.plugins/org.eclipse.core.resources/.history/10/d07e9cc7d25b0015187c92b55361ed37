@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Øving 4</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/rainbow-custom.min.js"></script>
+</head>
+<body>
+<h1>Oppgave 1</h1>
+
+<pre><code data-language="javascript">var myDocuments = (function() {
+	return {
+		countElements : function(tagName) {
+			var tags = document.getElementsByTagName(tagName);
+			if(tags.length) return tags.length;
+			else return null;
+		}
+	};
+})();
+</code></pre>
+
+<ul>
+<li>Hvor </li>
+<li>Mange </li>
+<li>&lt;li&gt;</li>
+<li>Tags</li>
+<li>Er</li>
+<li>Det</li>
+<li>Mon</li>
+<li>Tro?</li>
+</ul>
+
+<input type="button" onclick="oppgave1()" value="Oppgave 1" />
+
+<h1>Oppgave 2</h1>
+
+<input type="button" onclick="oppgave2()" value="Oppgave 2" />
+
+<h1>Oppgave 3</h1>
+
+</body>
+</html>

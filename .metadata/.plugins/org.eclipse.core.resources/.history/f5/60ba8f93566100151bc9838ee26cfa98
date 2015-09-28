@@ -1,0 +1,31 @@
+"use strict";
+
+var logId = {
+	value: -1	
+};
+
+(function() {
+//	function lastet() {
+//		var url = config.servicesPath + "/endringer";
+//		var ajax = new AJAXConnection(url);
+//		ajax.onsucces = createRows;
+//		ajax.get([logId.value]);
+//	}
+	function lastet() {
+		function refresh() {
+			var http = new HTTPOperations("/endringer", updateLogId);
+			http.getMembersByLogId(logId.value);
+			
+			refresh();
+		}
+		
+		function updateLogId(responseText) {
+			var obj = JSON.parse(responseText);
+		}
+		
+		window.setTimeout(refresh, 5000);	
+	}
+	
+	
+	window.addEventListener("DOMContentLoaded", lastet);
+})();

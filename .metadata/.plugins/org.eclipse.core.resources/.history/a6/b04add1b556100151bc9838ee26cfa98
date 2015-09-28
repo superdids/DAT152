@@ -1,0 +1,18 @@
+"use strict";
+
+function HTTPOperations() {
+	
+}
+
+
+HTTPOperations.prototype.createMember = function(member) {
+	
+}
+
+HTTPOperations.prototype.getMembersByLogId(logId) {
+	
+}
+
+HTTPOperations.prototype.updateMemberById = function(id) {
+	
+}

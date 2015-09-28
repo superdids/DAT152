@@ -1,0 +1,11 @@
+"use strict";
+
+var logId = {
+	value: -1	
+};
+
+(function() {
+	function lastet() {
+		var url = config.servicesPath + "/endringer";
+	}
+})();

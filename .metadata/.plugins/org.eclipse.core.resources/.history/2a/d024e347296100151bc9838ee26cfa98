@@ -1,0 +1,10 @@
+
+function Vindu(path) {
+	this._width = 100;
+	this._height = 100;
+	this._path = path;
+}
+
+Vindu.prototype.open = function() {
+	this.window.open(_path);
+}

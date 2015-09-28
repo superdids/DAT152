@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="js/urls.js"></script>
+<script type="text/javascript" src="js/test.js"></script>
+<script type="text/javascript" src="js/ajax/ajax.js"></script>
+<title>Oppgave 1</title>
+</head>
+<body>
+<h1>Oppgave 1</h1>
+
+	<h1>Medlemsliste</h1>
+	<table id="memberList">
+		<tr>
+			<th>Fornavn</th>
+			<th>Etternavn</th>
+			<th>Adresse</th>
+			<th>Telefon</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</table>
+	
+	<input type="button" value="Legg til medlem" onclick="showCreate()"/>
+	<br />
+	<br />
+	<div id="newMember" style="display: none">
+		<table>
+			<tr>
+				<td><b>Fornavn:</b></td>
+				<td><input type="text" name="fName" /></td>
+			</tr>
+			<tr>
+				<td><b>Etternavn:</b></td>
+				<td><input type="text" name="lName" /></td>
+			</tr>
+			<tr>
+				<td><b>Adresse:</b></td>
+				<td><input type="text" name="address" /></td>
+			</tr>
+			<tr>
+				<td><b>Telefonnummer:</b></td>
+				<td><input type="text" name="phone" /></td>
+			</tr>
+		</table>
+		<input type="button" onclick="hideCreate()" value="Submit" />		
+	</div>
+</body>
+</html>

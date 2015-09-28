@@ -1,0 +1,71 @@
+"use strict";
+
+function GUIManager(table, parent) {
+	this._table = table;
+	this._parent = parent || null;
+}
+
+GUIManager.prototype.createMembers = function(newMembers) {
+	for(var x = 0; x < newMembers.length; x++) {
+		var row = this._table.insertRow(-1);
+		row.id = "m" + newMembers[x].memberId;
+		this.appendCells(row, newMembers[x]);
+	}
+}
+
+GUIManager.prototype.deleteMembers = function(deletedMembers) {
+	
+}
+
+GUIManager.prototype.updateMembers = function(updatedMembers) {
+	for(var x = 0; x < updatedMembers.length; x++) {
+		var row = document.getElementById("m" + updatedMembers[x].memberId);
+		this.updateCells(row, updatedMembers[x]);
+	}
+}
+
+GUIManager.prototype.updateMember = function() {
+	
+}
+
+GUIManager.prototype.deleteMemberById = function(id) {
+	var list = this._table.rows;
+	for(var x = 1; x < list.length; x++) {
+		if(list[x].id == "m" + id) {
+			this._table.deleteRow(x); 
+			break;
+		}
+	}
+}
+
+GUIManager.prototype.updateCells = function(row, member) {
+	row.cells[0].innerHTML = member.firstname;
+	row.cells[1].innerHTML = member.lastname;
+	row.cells[2].innerHTML = member.address;
+	row.cells[3].innerHTML = member.phone;
+}
+
+GUIManager.prototype.appendCells = function(row, member) {
+	var cells = new Array(6);
+	for(var x = 0; x < 6; x++) {
+		cells[x] = row.insertCell(x);
+	}
+
+	cells[0].innerHTML = member.firstname;
+	cells[1].innerHTML = member.lastname;
+	cells[2].innerHTML = member.address;
+	cells[3].innerHTML = member.phone;
+	
+	var button0 = document.createElement("input");
+	button0.type = "button";
+	button0.value = "Endre";
+	button0.onclick = this._parent.buttonEdit(member.memberId);
+	
+	var button1 = document.createElement("input");
+	button1.type = "button";
+	button1.value = "Slett";
+	button1.onclick = this._parent.buttonDelete(member.memberId);
+	
+	cells[4].appendChild(button0);
+	cells[5].appendChild(button1);
+}

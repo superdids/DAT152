@@ -1,0 +1,23 @@
+"use strict";
+
+function HTTPOperations(dynamic, onsuccess) {
+	this._ajax = new AJAXConnection(config.servicesPath + dynamic);
+	this._ajax.onsuccess = onsuccess;
+}
+
+
+HTTPOperations.prototype.createMember = function(member) {
+	this._ajax.post([], {"member": member});
+}
+
+HTTPOperations.prototype.getMembersByLogId = function(logId) {	
+	this._ajax.get([logId]);
+}
+
+HTTPOperations.prototype.updateMember = function(id, member) {
+	this._ajax.put([id], {"member": member});
+}
+
+HTTPOperations.prototype.deleteMemberById = function(id) {
+	this._ajax.del([id]);
+}

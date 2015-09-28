@@ -1,0 +1,8 @@
+var myMembers = (function() {
+	return {
+		members: [],
+		storeMembers: function(arg) {
+			this.members = arg;
+		}
+	};
+})();
