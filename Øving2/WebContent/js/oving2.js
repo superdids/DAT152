@@ -214,7 +214,7 @@ function oppgave14() {
 	var res = document.getElementById('oppgave14res');
 	res.innerHTML = res.innerHTML.split(":")[0] + ":";
 	if(date != undefined) {
-		
+
 		var dag = ["Søndag", "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag"][date.getDay()];
 		res.innerHTML += " " + dag;
 	}
@@ -436,12 +436,11 @@ function validate(input) {
 var minNettleser = {
 		nettlesere : ["Firefox", "Opera", "Internet Explorer",
 		              "Safari", "Chrome", "Camino", "Konqueror",
-		              "Arora", "Midori"],
+		              "Arora", "Midori", "Edge"],
 		              getAgent : function(agent) {
 		            	  return navigator.userAgent.toLowerCase().indexOf(agent.toLowerCase());
 		              },
 		              getNettleser : function() {
-		            	  
 		            	  var tmp = ""; // representing the server
 		            	  // maybe use -1 instead
 		            	  var y = -1; // representing the client
@@ -453,11 +452,12 @@ var minNettleser = {
 		            				  receiverIndex = tmp;
 		            				  y = x;
 		            			  }
-		            			  
 		            		  }
 		            	  }
-		            	if(y == -1) alert("not found");
-		            	else alert(this.nettlesere[y]);
+		            	  if(y == -1) alert("not found");
+		            	  else alert(this.nettlesere[y] + " " + tmp);
+//		            	  var reg = //ig
+		            	  alert(navigator.userAgent);
 		              }
 };
 

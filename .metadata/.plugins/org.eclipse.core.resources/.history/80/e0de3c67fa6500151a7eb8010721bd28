@@ -1,0 +1,83 @@
+"use strict";
+/**
+ * Konstruktør med prototype-funksjoner for å håndtere programflyten. Inneholder
+ * metoder som:
+ * - Oppretter AJAX-forbindelser
+ * - Utfører regelmessige oppdateringer vha. AJAX
+ * 
+ */
+
+/** 
+ * Selve konstruktørfunksjonen utfører følgende:
+ * - Instansierer GUIManager som oppretter, endrer og sletter oppføringer
+ *   i medlemstabellen
+ * - Instansierer HTTPOperations som benytter seg av konstruktør-funksjonen 
+ *   AJAXConnection
+ * - Overskriver GUIManager sine egenskaper: onedit, ondelete og oncreate,
+ *   som henholdsvis endrer, sletter og oppretter oppføringer gjennom GUIManager 
+ */
+function Controller(parent) {
+	this._parent = parent;
+	this._gui = new GUIManager(this, -1);
+	this._http = new HTTPOperations("/endringer", this._gui.show.bind(this._gui));
+	this._gui._onedit = this.put.bind(this);
+	this._gui._ondelete = this.del.bind(this);
+	this._gui._oncreate = this.post.bind(this);
+}
+
+/**
+ * Prototype-funksjon som henter legger til knappelytter til ''legg til''-knappen alle oppdateringer basert på logId. Variabelen
+ * logId er 
+ */
+Controller.prototype.start = function() {
+	document.getElementById("addMember").onclick = (function() {
+		this.editMemberDialog(null);
+	}).bind(this._gui);
+	this._http.getMembersByLogId(this._gui.getLogId());
+
+	this.refresh();
+}
+
+Controller.prototype.refresh = function() {
+	this._parent.setTimeout((function() {
+		this._http.getMembersByLogId(this._gui.getLogId());
+		this.refresh();
+	}).bind(this), 2000);
+}
+
+Controller.prototype.post = function() {
+	var member = this.inputs();
+	member = this.arrayToJSON(member);
+	var http = new HTTPOperations("/medlem", this._gui.hideInputs);
+	http.createMember(member);
+}
+
+Controller.prototype.put = function(id) {
+	var http = new HTTPOperations("/medlem", this._gui.hideInputs);
+	var fields = this.inputs();
+	var member = this.arrayToJSON(fields); //JSON OBJECT
+
+	http.updateMember(id, member);
+	member.memberId = id;
+	this._gui.updateMember(member);
+}
+
+Controller.prototype.del = function(id) {
+	var http = new HTTPOperations("/medlem", this._gui.removed.bind(this._gui));
+	http.deleteMemberById(id);
+}
+
+Controller.prototype.inputs = function() {
+	function el(val) { return document.getElementById(val); };
+	//see oppgave01.html under the div id="manageMember"
+	return [el("fName"), el("lName"), el("address"), el("phone")];
+}
+
+Controller.prototype.arrayToJSON = function(member) {
+	return {
+		"firstname": member[0].value,
+		"lastname": member[1].value,
+		"address": member[2].value,
+		"phone": member[3].value
+	}
+}

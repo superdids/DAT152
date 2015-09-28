@@ -1,0 +1,115 @@
+"use strict";
+/**
+ * Konstruktørfunksjon med tilhørende prototype-funksjoner for å håndtere 
+ * programflyten. Prototype-funksjonene omfatter blandt annet:
+ * - Opprettelse av AJAX-forbindelser
+ * - Utførelse av regelmessige oppdateringer vha. AJAX
+ * 
+ */
+
+/** 
+ * Selve konstruktørfunksjonen utfører følgende:
+ * - Instansierer GUIManager som oppretter, endrer og sletter oppføringer
+ *   i medlemstabellen
+ * - Instansierer HTTPOperations som benytter seg av konstruktør-funksjonen 
+ *   AJAXConnection
+ * - Overskriver GUIManager sine egenskaper: onedit, ondelete og oncreate,
+ *   som henholdsvis endrer, sletter og oppretter oppføringer gjennom GUIManager 
+ */
+function Controller(parent) {
+	//parent er ikke i bruk.
+	this._parent = parent;
+	this._gui = new GUIManager(this, -1);
+	this._http = new HTTPOperations("/endringer", this._gui.show.bind(this._gui));
+	this._gui._onedit = this.put.bind(this);
+	this._gui._ondelete = this.del.bind(this);
+	this._gui._oncreate = this.post.bind(this);
+}
+
+/**
+ * Prototype-funksjon som legger til knappelytter til ''legg til''-knappen
+ * og henter alle oppdateringer basert på logId. Variabelen logId er lagret i 
+ * GUIManager og er initiert med -1 som vi ser av konstruktørfunksjonen 
+ * til Controller.
+ */
+Controller.prototype.start = function() {
+	document.getElementById("addMember").onclick = (function() {
+		this.editMemberDialog(null);
+	}).bind(this._gui);
+	this._http.getMembersByLogId(this._gui.getLogId());
+
+	this.refresh();
+}
+
+/**
+ * Prototype-funksjon som gjør regelmessige AJAX-kall som sørger
+ * for en stadig oppdatert medlemsliste.
+ */
+Controller.prototype.refresh = function() {
+	this._parent.setTimeout((function() {
+		this._http.getMembersByLogId(this._gui.getLogId());
+		this.refresh();
+	}).bind(this), 2000);
+}
+
+/**
+ * Prototype-funksjon som sender et medlem-objekt og foretar
+ * en AJAX-post forespørsel gjennom HTTPOperations.
+ */
+Controller.prototype.post = function() {
+	var member = this.inputs();
+	member = this.arrayToJSON(member);
+	var http = new HTTPOperations("/medlem", this._gui.hideInputs);
+	http.createMember(member);
+}
+
+/**
+ * Prototype-funksjon som sender et medlem-objekt og foretar en 
+ * AJAX-put forespørsel gjennom HTTPOperations.
+ * @param id Unik identifisering av medlemmet som skal oppdateres.
+ */
+Controller.prototype.put = function(id) {
+	var http = new HTTPOperations("/medlem", this._gui.hideInputs);
+	var fields = this.inputs();
+	var member = this.arrayToJSON(fields); //JSON OBJECT
+
+	http.updateMember(id, member);
+	member.memberId = id;
+	this._gui.updateMember(member);
+}
+
+/**
+ * Prototype-funksjon som sender en medlems-id og foretar en
+ * AJAX-delete forespørsel gjennom HTTPOperations.
+ * @param id Unik identifisering av medlemmet som skal slettes.
+ */
+Controller.prototype.del = function(id) {
+	var http = new HTTPOperations("/medlem", this._gui.removed.bind(this._gui));
+	http.deleteMemberById(id);
+}
+
+/**
+ * Prototype-funksjon som henter tekst som er inneholdt i input-feltene
+ * der et medlem skal oppdateres eller opprettes.
+ * @returns {Array} Array-forekomst av aktuelle input-felter.
+ */
+Controller.prototype.inputs = function() {
+	function el(val) { return document.getElementById(val); };
+	//se oppgave01.html under div-en id="manageMember"
+	return [el("fName"), el("lName"), el("address"), el("phone")];
+}
+
+/**
+ * Prototype-funksjon som returnerer en forekomst av et JSON-objekt, 
+ * basert på parameteren 
+ * @param member betraktet som en Array-forekomst
+ * @returns {___anonymous3417_3545} JSON-objekt
+ */
+Controller.prototype.arrayToJSON = function(member) {
+	return {
+		"firstname": member[0].value,
+		"lastname": member[1].value,
+		"address": member[2].value,
+		"phone": member[3].value
+	}
+}

@@ -1,0 +1,9 @@
+"use strict";
+
+/**
+ * Globalt JSON-objekt som holder på en egenskap som representerer
+ * URL-en til tjeneren på localhost. Egenskapen er forbeholdt
+ */
+var config = {
+		servicesPath: "http://localhost:8080/Mservices/data"
+};

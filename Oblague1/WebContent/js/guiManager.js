@@ -1,15 +1,75 @@
 "use strict";
 
+/**
+ * Konstruktørfunksjon med tilhørende prototype-funksjoner for å 
+ * håndtere medlemslisten.
+ */
+
+/**
+ * Selve konstruktørfunksjonen utfører følgende:
+ * - Instansiering av referanse til tabell-objektt som representerer
+ *   medlemslisten
+ * - Oppretter egenskap som representerer konteksten til objektet som
+ *   opprettet instans av GUIManager
+ * - Oppretter egenskap som representerer logId
+ * - Egenskapene ondelete, onedit og oncreate, som må overskrives 
+ *   for å utføre ønsket funksjonalitet.
+ */
 function GUIManager(parent, logId) {
 	this._table = document.getElementById("memberList");
 	this._parent = parent;
 	this._logId = logId;
+	this._ondelete = function(id) { alert("delete pushed for id: " + id); };
+	this._onedit = function(id) { alert("update pushed for id: " + id); };
+	this._oncreate = function() { alert("creating entry for a member... "); };
 }
 
+/**
+ * Prototype-funksjon som returnerer nåværende logId. 
+ * @returns logId med verdi > -2.
+ */
 GUIManager.prototype.getLogId = function() {
 	return this._logId;
 }
 
+/**
+ * Prototype-funksjon for å opprette, slette og oppdatere medlemmer
+ * basert på respons fra tjener.
+ * @param responseText respons fra tjener
+ */
+GUIManager.prototype.show = function(responseText) {
+	var obj = JSON.parse(responseText);
+	var obj = obj.updates;
+	if(obj.status) 
+		this._logId = obj.logId;
+
+	if(obj.newMembers)
+		this.createMembers(this.toArray(obj.newMembers));
+	
+	if(obj.deletedMembers)
+		this.deleteMembers(this.toArray(obj.deletedMembers));
+	
+	if(obj.updatedMembers)
+		this.updateMembers(this.toArray(obj.updatedMembers));
+}
+
+/**
+ * Funksjon som forsøker å returnere parameteren som en Array-forekomst, 
+ * uavhengig av type
+ * @param arg parameteret som skal returneres som en Array-forekomst.
+ * @returns Array-forekomst
+ */
+GUIManager.prototype.toArray = function(arg) {
+	if(arg instanceof Array) return arg;
+	else return [arg];
+}
+
+/**
+ * Oppretter ett eller flere medlemmer og plasserer disse i nye rader i 
+ * tabellen.
+ * @param newMembers Array-forekomst av medlemmet/medlemmene som skal
+ * opprettes
+ */
 GUIManager.prototype.createMembers = function(newMembers) {
 	for(var x = 0; x < newMembers.length; x++) {
 		var row = this._table.insertRow(-1);
@@ -18,38 +78,24 @@ GUIManager.prototype.createMembers = function(newMembers) {
 	}
 }
 
-GUIManager.prototype.show = function(responseText) {
-	var obj = JSON.parse(responseText);
-	var obj = obj.updates;
-	if(obj.status) 
-		this._logId = obj.logId;
-
-	if(obj.newMembers) {
-		if(obj.newMembers instanceof Array)
-			this.createMembers(obj.newMembers);
-		else 
-			this.createMembers([obj.newMembers]);
-	}
-	if(obj.deletedMembers) {
-		if(obj.deletedMembers instanceof Array) 
-			this.deleteMembers(obj.deletedMembers);
-		else
-			this.deleteMembers([obj.deletedMembers]);
-	}
-	if(obj.updatedMembers) {
-		if(obj.updatedMembers instanceof Array)
-			this.updateMembers(obj.updatedMembers);
-		else
-			this.updateMembers([obj.updatedMembers]);
-	}
-}
-
+/**
+ * Sletter ett eller flere eksisterende medlemmer og fjerner disse fra 
+ * aktuelle rader i tabellen.
+ * @param deletedMembers Array-forekomst av identifikasjonen(e) til 
+ * til medlemmet/medlemmene som skal slettes
+ */
 GUIManager.prototype.deleteMembers = function(deletedMembers) {
 	for(var x = 0; x < deletedMembers.length; x++) {
 		this.deleteMemberById(deletedMembers[x]);
 	}
 }
 
+/**
+ * Oppdaterer ett eller flere eksisterende medlemmer og oppdaterer
+ * aktuelle rader i tabellen.
+ * @param updatedMembers Array-forekomst av medlemmet/medlemmene som
+ * skal oppdateres
+ */
 GUIManager.prototype.updateMembers = function(updatedMembers) {
 	for(var x = 0; x < updatedMembers.length; x++) {
 		var row = document.getElementById("m" + updatedMembers[x].memberId);
@@ -57,11 +103,24 @@ GUIManager.prototype.updateMembers = function(updatedMembers) {
 	}
 }
 
-GUIManager.prototype.updateMember = function(member) {
-	var row = document.getElementById("m" + member.memberId);
-	this.updateCells(row, member);
+/**
+ * Oppdaterer celler i en rad.
+ * @param row Raden som skal oppdateres
+ * @param member JSON-objekt med verdiene som skal overskrives i cellene
+ */
+GUIManager.prototype.updateCells = function(row, member) {
+	row.cells[0].innerHTML = member.firstname;
+	row.cells[1].innerHTML = member.lastname;
+	row.cells[2].innerHTML = member.address;
+	row.cells[3].innerHTML = member.phone;
 }
 
+/**
+ * Skjuler div-elementet som benyttes til å opprette/endre et medlem.
+ * @param responseText Respons fra tjener, tanken her er at dersom
+ * det forekommer en feil, skal ikke div-elementet skjules, men det skal
+ * eller vises en passende feilmelding.
+ */
 GUIManager.prototype.hideInputs = function(responseText) {
 	var obj = JSON.parse(responseText);
 	obj = obj.updatedMember;
@@ -74,6 +133,12 @@ GUIManager.prototype.hideInputs = function(responseText) {
 	}
 } 
 
+/**
+ * Prototype-funksjon som er del av deleteMembers. Sletter et enkelt medlem.
+ * Forbeholdt om at radlisten i tabellen til enhver tid er sortert, kan 
+ * dette i utgangspunktet optimaliseres.
+ * @param id Unik identifisering av medlemmet som skal slettes.
+ */
 GUIManager.prototype.deleteMemberById = function(id) {
 	var list = this._table.rows;
 	for(var x = 1; x < list.length; x++) {
@@ -84,13 +149,11 @@ GUIManager.prototype.deleteMemberById = function(id) {
 	}
 }
 
-GUIManager.prototype.updateCells = function(row, member) {
-	row.cells[0].innerHTML = member.firstname;
-	row.cells[1].innerHTML = member.lastname;
-	row.cells[2].innerHTML = member.address;
-	row.cells[3].innerHTML = member.phone;
-}
-
+/**
+ * Prototype-funksjon som oppretter celler for en gitt rad
+ * @param row Raden det skal legges til celler på
+ * @param member Medlemmet som skal assosieres til raden
+ */
 GUIManager.prototype.appendCells = function(row, member) {
 	var cells = new Array(6);
 	for(var x = 0; x < 6; x++) {
@@ -105,53 +168,68 @@ GUIManager.prototype.appendCells = function(row, member) {
 	var button0 = document.createElement("input");
 	button0.type = "button";
 	button0.value = "Endre";
-	button0.onclick = this._parent.buttonEdit(member.memberId);
+	button0.onclick = (function() {
+		this.editMemberDialog(member.memberId);
+	}).bind(this);
 
 	var button1 = document.createElement("input");
 	button1.type = "button";
 	button1.value = "Slett";
-	button1.onclick = this._parent.buttonDelete(member.memberId);
+	button1.onclick = (function() {
+		this._ondelete(member.memberId);
+	}).bind(this);
 
 	cells[4].appendChild(button0);
 	cells[5].appendChild(button1);
 }
 
-
-
+/**
+ * Prototype-funksjon for å vise div-elementet som skal benyttes til
+ * å endre eller opprette et medlem. 
+ * @param id Unik identifisering av medlem som skal endres, dersom
+ * denne verdien er tilordnet null ved kall på funksjon, betraktes
+ * heller "opprett medlem".
+ */
 GUIManager.prototype.editMemberDialog = function(id) {
 	document.getElementById("manageMember").style.display = "inline";
+var fields = this._parent.inputs();
+	if(id) {
 
-	var row = document.getElementById("m"+id);
+		var row = document.getElementById("m"+id);
 
-	function el(val) { return document.getElementById(val); };
+		for(var x = 0; x < fields.length; x++) {
+			fields[x].value = row.cells[x].innerHTML;
+		}
 
-//	var fields = inputs();
-	var fields = this._parent.inputs();
-	
-	for(var x = 0; x < fields.length; x++) {
-		fields[x].value = row.cells[x].innerHTML;
+		document.getElementById("submitMember").onclick = (function() {
+			this._onedit(id);
+		}).bind(this);
+	} else {
+		for(var x = 0; x < fields.length; x++) {
+			fields[x].value = "";
+		}
+		document.getElementById("submitMember").onclick = (function() {
+			this._oncreate();
+		}).bind(this);
 	}
-
-	document.getElementById("submitMember").onclick = this._parent.put.bind(this._parent);
-	
-//	document.getElementById("submitMember").onclick = function() {
-//		var http = new HTTPOperations("/medlem", updateMember);
-//		var member = arrayToJSON(fields); //JSON OBJECT
-//
-//		http.updateMember(id, member);
-//		var gui = new GUIManager();
-//		member.memberId = id;
-//		gui.updateMember(member);
-//
-//	}
 }
 
+/**
+ * Prototype-funksjon for å slette et medlem fra tabellen så snart
+ * tjeneren har gitt respons. 
+ * @param responseText Respons fra tjener. Inneholder et JSON-objekt
+ * som representerer medlemmets id samt status på sletting.
+ */
 GUIManager.prototype.removed = function(responseText) {
 	var obj = JSON.parse(responseText);
 	obj = obj.updatedMember;
 	if(obj.status) {
-//		var table = document.getElementById("memberList");
-//		var gui = new GUIManager(/*table*/);
-//		gui.deleteMemberById(obj.memberId);
+		var list = this._table.rows;
+		for(var x = 1; x < list.length; x++) {
+			if(list[x].id == "m"+obj.memberId) {
+				this._table.deleteRow(x);
+				break;
+			}
+		}
 	}
 }

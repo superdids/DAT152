@@ -1,0 +1,13 @@
+"use strict";
+/**
+ * 
+ */
+(function() {
+	function lastet() {
+		var mainController = new Controller(window);
+		mainController.start();
+	}
+
+	window.addEventListener("DOMContentLoaded", lastet);
+})();
+

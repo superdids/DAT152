@@ -1,0 +1,6 @@
+"use strict";
+
+var config = {
+//		servicesPath: "http://localhost:8080/Mservices/data"
+		servicesPath: "http://158.37.76.67:8080/Mservices/data"
+};
