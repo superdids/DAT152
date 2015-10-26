@@ -1,0 +1,14 @@
+package no.hib.dat152;
+
+public class Klasse {
+
+
+	
+	public static boolean validatePhone(String p) {
+		return p != null && p.matches("[0-9]{8}");
+	}
+	
+	public static boolean validateFirstName(String n) {
+		
+	}
+}

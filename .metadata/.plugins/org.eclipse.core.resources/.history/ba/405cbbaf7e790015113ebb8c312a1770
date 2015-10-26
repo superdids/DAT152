@@ -1,0 +1,10 @@
+package no.hib.dat152.customTags;
+
+public class CurrencyConverter {
+
+	private String language = "en";
+	
+	private void setLanguage(String language) {
+		this.language = language;
+	}
+}

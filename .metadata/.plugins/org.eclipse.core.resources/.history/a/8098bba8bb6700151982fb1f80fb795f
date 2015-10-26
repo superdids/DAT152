@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Oppgave 5</title>
+<script type="text/javascript" src="js/oppgave05.js"></script>
+<script type="text/javascript" src="js/ajax/ajax.js"></script>
+<script type="text/javascript" src="js/browserStatistics.js"></script>
+</head>
+<body>
+<h1>Oppgave 5</h1>
+<p>Trykk på knappen for å sende statistikk til tjeneren:</p>
+<input id="knapp" type="button" value="Send data" />
+<p id="res"></p>
+
+</body>
+</html>

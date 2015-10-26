@@ -1,0 +1,9 @@
+package no.hib.dat152.models;
+
+public class CartItem implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	private Product product;
+	
+	
+}

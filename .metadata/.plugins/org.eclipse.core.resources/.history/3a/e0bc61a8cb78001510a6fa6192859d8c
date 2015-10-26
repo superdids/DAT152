@@ -1,0 +1,7 @@
+products.label.name = Navn
+products.label.price = Pris
+products.label.description = Beskrivelse
+products.button.submit = Legg til i handlevogn
+products.label.chooseLang = Select language
+products.label.lang = English
+products.label.selected = (Selected)

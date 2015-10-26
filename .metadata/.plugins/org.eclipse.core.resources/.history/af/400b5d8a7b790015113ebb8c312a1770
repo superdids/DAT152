@@ -1,0 +1,47 @@
+package no.hib.dat152.customTags;
+
+import java.io.IOException;
+import java.io.StringWriter;
+
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.tagext.SimpleTagSupport;
+
+import org.joda.time.DateTime;
+
+import com.frequal.romannumerals.Converter;
+
+public class CopyrightSince extends SimpleTagSupport {
+	
+	private Integer year;
+	
+	public void setYear (Integer year) {
+		this.year = year;
+	}
+	
+	@Override
+	public void doTag() throws JspException, IOException {
+		StringWriter stringWriter = new StringWriter();
+		JspWriter out = getJspContext().getOut();
+		
+		getJspBody().invoke(stringWriter);
+		
+		String result = stringWriter.toString();
+		if(year == null || result == null) return;
+		
+		String constant = "&copy;";
+		
+		out.print(constant + " " + toRome() + " " + result);
+	}
+
+	private String toRome() {
+		DateTime dateTime = new DateTime(System.currentTimeMillis());
+		Converter converter = new Converter();
+		Integer thisYear = dateTime.getYear();
+		System.out.println(thisYear);
+		if(thisYear == year)
+			return converter.toRomanNumerals(year);
+		else 
+			return converter.toRomanNumerals(year) + "-" + converter.toRomanNumerals(thisYear);		
+	}
+}

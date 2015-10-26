@@ -1,0 +1,4 @@
+products.label.name = Nombre
+products.label.price = Precio
+products.label.description = Description
+products.button.submit = Add to cart

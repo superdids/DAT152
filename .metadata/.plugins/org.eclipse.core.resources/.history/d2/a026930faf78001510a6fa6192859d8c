@@ -1,0 +1,7 @@
+package no.hib.dat102.database;
+
+public class Description {
+
+	private DescriptionId id;
+	
+}

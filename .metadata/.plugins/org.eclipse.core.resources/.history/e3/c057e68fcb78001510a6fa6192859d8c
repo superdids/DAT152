@@ -1,0 +1,8 @@
+products.label.name = Name
+products.label.price = Price
+products.label.description = Description
+products.button.submit = Add to cart
+
+products.label.chooseLang = Select language
+products.label.lang = English
+products.label.selected = (Selected)

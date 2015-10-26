@@ -4,4 +4,5 @@
   <module moduleId="org.eclipse.jst.jee.server:Mdemo" serverId="TomEE7 at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:Obl1" serverId="TomEE7 at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:Oblig1" serverId="TomEE7 at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:Oblig3"/>
 </modules>

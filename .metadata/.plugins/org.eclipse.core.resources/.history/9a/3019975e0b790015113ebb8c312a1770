@@ -1,0 +1,7 @@
+package no.hib.dat152.models;
+
+public class CartItem implements Serializable {
+
+	private Product product;
+	
+}

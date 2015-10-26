@@ -1,0 +1,11 @@
+package no.hib.dat152.util;
+
+import java.util.Locale;
+
+public class Main {
+public static void main(String[] args) {
+	Locale l = new Locale("en_US");
+	System.out.println(l.getCountry());
+//	System.out.println(123);
+}
+}

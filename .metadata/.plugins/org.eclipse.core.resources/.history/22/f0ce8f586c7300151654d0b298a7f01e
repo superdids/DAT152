@@ -1,0 +1,12 @@
+package no.uib.inf102;
+
+public class Obj {
+
+	private String a;
+	private String b;
+	
+	public Obj(String a, String b) {
+		this.a = a;
+		this.b = b;
+	}
+}

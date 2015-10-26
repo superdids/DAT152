@@ -1,0 +1,9 @@
+package no.hib.dat152.models;
+
+public class Product {
+
+	private Integer productNumber;
+	private String productName;
+	private Double priceInEuro;
+	private String relativePathToImg;
+}

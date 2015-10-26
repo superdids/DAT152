@@ -1,0 +1,68 @@
+package no.hib.dat152.models;
+
+/**
+ * Bønne som representerer et produkt.
+ * @author Didrik
+ *
+ */
+public class Product {
+
+	private Integer productNumber;
+	private String productName;
+	private Double priceInEuro;
+	private String relativePathToImg;
+	
+	/**
+	 * Tom konstruktør, tilordner 'null' til alle feltvariabler
+	 */
+	public Product() {
+		this(null,null,null,null);
+	}
+	
+	/**
+	 * Konstruktør som tilordner verdier til feltvariablene
+	 * @param productNumber Produktnummer assosiert til produktet
+	 * @param productName Navnet på produktet
+	 * @param priceInEuro Produktets pris, i euro
+	 * @param relativePathToImg Relativ sti til bilde av produktet
+	 */
+	public Product(Integer productNumber, String productName, 
+			Double priceInEuro, String relativePathToImg) {
+		this.productNumber = productNumber;
+		this.productName = productName;
+		this.priceInEuro = priceInEuro;
+		this.relativePathToImg = relativePathToImg;
+	}
+	
+	public Integer getProductNumber() {
+		return productNumber;
+	}
+	
+	public void setProductNumber(Integer productNumber) {
+		this.productNumber = productNumber;
+	}
+	
+	public String getProductName() {
+		return productName;
+	}
+	
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	
+	public Double getPriceInEuro() {
+		return priceInEuro;
+	}
+	
+	public void setPriceInEuro(Double priceInEuro) {
+		this.priceInEuro = priceInEuro;
+	}
+	
+	public String getRelativePathToImg() {
+		return relativePathToImg;
+	}
+	
+	public void setRelativePathToImg(String relativePathToImg) {
+		this.relativePathToImg = relativePathToImg;
+	}
+}

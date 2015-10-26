@@ -1,0 +1,53 @@
+package no.hib.dat152.customTags;
+
+import java.io.IOException;
+import java.io.StringWriter;
+
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.tagext.SimpleTagSupport;
+
+public class CopyrightSince extends SimpleTagSupport {
+	
+	private Integer year;
+	
+	public void setYear (Integer year) {
+		this.year = year;
+	}
+	
+	@Override
+	public void doTag() throws JspException, IOException {
+		StringWriter stringWriter = new StringWriter();
+		JspWriter out = getJspContext().getOut();
+		
+		getJspBody().invoke(stringWriter);
+		
+		String result = stringWriter.toString();
+		if(year == null || result == null) return;
+		
+		
+		
+		out.print(result);
+	}
+
+	private String toRome() {
+		
+		
+		
+//		 if (j==0) {
+//	            switch (v.get(0).toString()){
+//	                case "0" : ones = ""; break;
+//	                case "1" : ones = "I"; break;
+//	                case "2" : ones = "II"; break;
+//	                case "3" : ones = "III"; break;
+//	                case "4" : ones = "IV"; break;
+//	                case "5" : ones = "V"; break;
+//	                case "6" : ones = "VI"; break;
+//	                case "7" : ones = "VII"; break;
+//	                case "8" : ones = "VIII"; break;
+//	                case "9" : ones = "IX"; break;
+//	            }
+		
+		return "";
+	}
+}

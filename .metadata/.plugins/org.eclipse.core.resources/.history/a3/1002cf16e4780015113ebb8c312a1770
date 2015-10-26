@@ -1,0 +1,7 @@
+package no.hib.dat152.models;
+
+import java.io.Serializable;
+
+public class MyAwesomeCart implements Serializable {
+
+}

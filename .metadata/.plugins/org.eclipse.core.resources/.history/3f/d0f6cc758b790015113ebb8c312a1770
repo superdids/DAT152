@@ -1,0 +1,7 @@
+package no.hib.dat152.util;
+
+public class Main {
+public static void main(String[] args) {
+	Locale l = new Locale("en_US");
+}
+}

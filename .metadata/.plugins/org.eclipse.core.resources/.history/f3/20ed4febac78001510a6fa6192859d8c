@@ -1,0 +1,6 @@
+package no.hib.dat152.models;
+
+public class DescriptionId {
+	private Integer productNumber;
+	private String languageCode;
+}

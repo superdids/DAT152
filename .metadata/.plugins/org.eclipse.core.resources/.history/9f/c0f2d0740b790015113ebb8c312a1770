@@ -1,0 +1,18 @@
+package no.hib.dat152.models;
+
+import java.io.Serializable;
+
+import no.hib.dat102.database.Product;
+
+public class CartItem implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	private Product product;
+	private Integer amount;
+	
+	public CartItem(Product product, Integer amount) {
+		this.product = product;
+	}
+	
+	
+}

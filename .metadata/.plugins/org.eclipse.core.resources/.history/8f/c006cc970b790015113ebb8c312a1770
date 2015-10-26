@@ -1,0 +1,18 @@
+package no.hib.dat152.models;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import no.hib.dat102.database.Product;
+
+
+public class MyAwesomeCart implements Serializable {
+
+	//TODO
+	private static final long serialVersionUID = 1L;
+	private List<CartItem> items = new ArrayList<Product,Integer>();
+	
+	
+	
+}

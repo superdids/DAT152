@@ -1,0 +1,18 @@
+package no.hib.dat152.customTags;
+
+import java.io.IOException;
+
+import javax.servlet.jsp.JspException;
+
+public class CurrencyConverter extends SimpleTagSupport {
+
+	private String language = "en";
+	
+	private void setLanguage(String language) {
+		this.language = language;
+	}
+	
+	public void doTag() throws JspException, IOException {
+		
+	}
+}

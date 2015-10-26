@@ -1,0 +1,14 @@
+package no.hib.dat102.database;
+
+/**
+ * Entitet/bønne som holder på en samling med tilgjengelige
+ * språk for web applikasjonen
+ * @author Didrik
+ *
+ */
+public class AvailableLanguages {
+
+	private List<String> languages;
+	
+	public AvailableLanguages() {
+}

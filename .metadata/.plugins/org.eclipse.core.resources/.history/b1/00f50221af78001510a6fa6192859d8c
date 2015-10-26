@@ -1,0 +1,11 @@
+package no.hib.dat102.database;
+
+public class Description {
+
+	private DescriptionId id;
+	private String text;
+	
+	public Description() {
+		this(null,null);
+	}
+}

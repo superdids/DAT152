@@ -1,0 +1,17 @@
+package no.hib.dat152.customTags;
+
+import java.io.IOException;
+
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.SimpleTagSupport;
+
+public class ShortText extends SimpleTagSupport {
+
+	private String maxChars;
+	
+	@Override
+	public void doTag() throws JspException, IOException {
+		
+	}
+	
+}

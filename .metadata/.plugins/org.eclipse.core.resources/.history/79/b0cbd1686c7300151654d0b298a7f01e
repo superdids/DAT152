@@ -1,0 +1,9 @@
+package no.uib.inf102;
+
+import java.util.HashMap;
+
+public class Main {
+	public static void main(String[] args) {
+	ArrayList<Obj> al = new ArrayList<Obj>();
+	}
+}

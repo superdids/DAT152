@@ -128,9 +128,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log." suffix=".txt"/>
 
-      <Context docBase="D:\GitRepositories\JavaScript\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="D:\GitRepositories\JavaScript\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Mservices" path="/Mservices" reloadable="true" source="org.eclipse.jst.jee.server:Mservices">         
-   <Resource auth="Container" driverClassName="org.apache.derby.jdbc.EmbeddedDriver" factory="org.apache.commons.dbcp.BasicDataSourceFactory" name="jdbc/DAT152_Memberlist" password="kjUyhg54RRp" type="javax.sql.DataSource" url="jdbc:derby:memory:DAT152_Memberlist;create=true" username="dat152AJAX"/>
-</Context><Context docBase="D:\GitRepositories\JavaScript\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Mdemo" path="/Mdemo" reloadable="true" source="org.eclipse.jst.jee.server:Mdemo"/><Context docBase="D:\GitRepositories\JavaScript\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Oblig1" path="/Oblig1" reloadable="true" source="org.eclipse.jst.jee.server:Oblig1"/><Context docBase="D:\GitRepositories\JavaScript\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Obligue" path="/Obligue" reloadable="true" source="org.eclipse.jst.jee.server:Obligue"/><Context docBase="D:\GitRepositories\JavaScript\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Oblague1" path="/Oblague1" reloadable="true" source="org.eclipse.jst.jee.server:Oblague1"/></Host>
+      <Context docBase="D:\GitRepositories\JavaScript\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="D:\GitRepositories\JavaScript\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Oblig3" path="/oblig3" reloadable="true" source="org.eclipse.jst.jee.server:Oblig3"/></Host>
     </Engine>
   </Service>
 </Server>

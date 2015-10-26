@@ -1,0 +1,4 @@
+products.label.name = Navn
+products.label.price = Pris
+products.label.description = Beskrivelse
+products.button.submit = Legg til i handlevogn

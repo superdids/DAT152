@@ -1,0 +1,49 @@
+package no.hib.dat102.database;
+
+import java.util.List;
+
+/**
+ * Kontrakt som definerer oppførselen til et Data Access Object
+ * som opererer på beskrivelser i en gitt samling
+ * @author Didrik
+ *
+ */
+public interface DescriptionDAO {
+
+	/**
+	 * Oppretter en ny beskrivelse
+	 * @param d Beskrivelsen som skal opprettes
+	 * @return Beskrivelsen, null dersom det skulle forekomme en feil
+	 */
+	public Description create(Description d);
+	
+	/**
+	 * Henter en beskrivelse med en gitt primærnøkkel
+	 * @param primaryKey Primærnøkkelen som det søkes etter
+	 * @return Produktet dersom primærnøkkelen assosieres til
+	 * en beskrivelse i samlingen, null ellers
+	 */
+	public Description read(DescriptionId primaryKey);
+	
+	/**
+	 * Oppdaterer en eksisterende beskrivelse, eller oppretter
+	 * om den ikke eksisterer
+	 * @param d Beskrivelsen som skal oppdateres
+	 * @return Beskrivelsen, null om det skulle forekomme en feil
+	 */
+	public Description update(Description d);
+	
+	/**
+	 * Sletter en beskrivelse med en gitt primærnøkkel
+	 * @param primaryKey Primærnøkkelen som det søkes etter
+	 * @return True om beskrivelsen ble fjernet fra samlingen, false ellers
+	 */
+	public boolean delete(DescriptionId primaryKey);
+	
+	/**
+	 * Henter alle produkter i samlingen
+	 * @return Samling av produkter
+	 */
+	public List<Description> readAll();
+	
+}

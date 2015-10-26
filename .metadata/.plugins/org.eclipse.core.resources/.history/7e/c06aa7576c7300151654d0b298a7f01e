@@ -1,0 +1,8 @@
+package no.uib.inf102;
+
+public class Obj {
+
+	private String a;
+	private String b;
+	
+}

@@ -1,4 +1,0 @@
-
-function Vindu() {
-	this._width = 100;
-}

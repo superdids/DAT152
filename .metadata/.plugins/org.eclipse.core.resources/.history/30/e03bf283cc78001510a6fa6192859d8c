@@ -1,0 +1,41 @@
+package no.hib.dat102.database;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Entitet/bønne som holder på en samling med tilgjengelige
+ * språk for web applikasjonen
+ * @author Didrik
+ *
+ */
+public class AvailableLanguages {
+
+	private List<String> languages;
+	
+	/**
+	 * Tom konstruktør, oppretter instans av aktuell feltvariabel
+	 */
+	public AvailableLanguages() {
+		languages = new ArrayList<String>();
+	}
+	
+	/**
+	 * Henter samlingen med tilgjengelge språk
+	 * @return Tilgjengelige språk
+	 */
+	public List<String> getLanguages() {
+		return languages;
+	}
+	
+	public void setLanguages(List<String> languages) {
+		this.languages = languages;
+	}
+	
+	public void addLanguage(String s) {
+		String ignoreCase = "?i";
+		for(String language : languages) 
+			if(language.matches(ignoreCase+s)) return;
+		languages.add(s.toLowerCase());
+	}
+}

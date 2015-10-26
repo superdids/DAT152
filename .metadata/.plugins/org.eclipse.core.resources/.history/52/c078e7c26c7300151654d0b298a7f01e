@@ -1,0 +1,22 @@
+package no.uib.inf102;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+public class Main {
+	public static void main(String[] args) {
+	ArrayList<Obj> al = new ArrayList<Obj>();
+	Collections.sort(al, new Comparator<Obj>() {
+
+		@Override
+		public int compare(Obj arg0, Obj arg1) {
+			
+			return arg0.getB() > arg1.getB() ? 1 : -1;
+		}
+		
+	});
+	
+	
+	}
+}

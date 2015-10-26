@@ -1,0 +1,23 @@
+package no.hib.dat102.database;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Entitet/bønne som holder på en samling med tilgjengelige
+ * språk for web applikasjonen
+ * @author Didrik
+ *
+ */
+public class AvailableLanguages {
+
+	private List<String> languages;
+	
+	public AvailableLanguages() {
+		languages = new ArrayList<String>();
+	}
+	
+	public List<String> getLanguages() {
+		return languages;
+	}
+}

@@ -1,0 +1,11 @@
+package no.uib.inf102;
+
+import java.util.HashMap;
+
+public class Main {
+	public static void main(String[] args) {
+		HashMap<String,String> hm = new HashMap<String,String>();
+		hm.put("a", "b");
+		hm.put("b", "b");
+	}
+}

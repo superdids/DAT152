@@ -1,0 +1,38 @@
+package no.hib.dat102.database;
+
+/**
+ * Entitet/bønne som representerer en beskrivelse av et produkt
+ */
+public class Description {
+
+	private DescriptionId id;
+	private String text;
+	private Product product;
+	
+	public Description() {
+		this(null,null);
+	}
+	
+	public Description(DescriptionId id, String text) {
+		this.id = id;
+		this.text = text;
+	}
+
+	public DescriptionId getId() {
+		return id;
+	}
+
+	public void setId(DescriptionId id) {
+		this.id = id;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+	
+	
+}

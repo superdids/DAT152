@@ -1,0 +1,25 @@
+package no.hib.dat152.models;
+
+public class DescriptionId {
+	private Integer productNumber;
+	private String languageCode;
+	
+	public DescriptionId() {
+		productNumber = languageCode = null;
+	}
+	
+	public Integer getProductNumber() {
+		return productNumber;
+	}
+	public void setProductNumber(Integer productNumber) {
+		this.productNumber = productNumber;
+	}
+	public String getLanguageCode() {
+		return languageCode;
+	}
+	public void setLanguageCode(String languageCode) {
+		this.languageCode = languageCode;
+	}
+	
+	
+}

@@ -1,0 +1,11 @@
+package no.hib.dat152;
+
+public class Klasse {
+	public static void main(String[] args) {
+		String a = "or jeg er and AND"; //skal bli " jeg er  "
+		String [] opsSymb = {"or", "create", "and"};
+		for(String b : opsSymb) {
+			
+		}
+	}
+}

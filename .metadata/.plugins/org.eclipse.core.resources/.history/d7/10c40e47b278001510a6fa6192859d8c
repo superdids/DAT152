@@ -1,0 +1,37 @@
+package no.hib.dat102.database;
+
+import java.util.List;
+
+public class DescriptionDAOImpl implements DescriptionDAO {
+
+	@Override
+	public Description create(Description d) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Description read(DescriptionId primaryKey) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Description update(Description d) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean delete(DescriptionId primaryKey) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Description> readAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,13 @@
+package no.hib.dat102.database;
+
+/**
+ * Kontrakt som definerer oppførselen til et Data Access Object
+ * som opererer på beskrivelser
+ * @author Didrik
+ *
+ */
+public interface DescriptionDAO {
+
+	public Description create(Description p);
+	
+}

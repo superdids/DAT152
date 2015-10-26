@@ -1,0 +1,5 @@
+package no.hib.dat152.models;
+
+public class Product {
+
+}

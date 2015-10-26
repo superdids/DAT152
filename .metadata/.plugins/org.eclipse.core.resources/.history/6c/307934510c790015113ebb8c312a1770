@@ -1,0 +1,30 @@
+package no.hib.dat152.models;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
+
+public class MyAwesomeCart implements Serializable {
+
+	//TODO
+	private static final long serialVersionUID = 1L;
+	private Map<String,CartItem> items = new HashMap<String,CartItem>();
+	
+	public MyAwesomeCart() {
+		this(null);
+	}
+	
+	public MyAwesomeCart(Map<String,CartItem> items) {
+		this.items = items;
+	}
+
+	public Map<String, CartItem> getItems() {
+		return items;
+	}
+
+	public void setItems(Map<String, CartItem> items) {
+		this.items = items;
+	}
+	
+}

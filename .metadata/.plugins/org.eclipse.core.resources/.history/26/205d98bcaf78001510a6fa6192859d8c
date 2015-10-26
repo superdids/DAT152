@@ -1,0 +1,6 @@
+package no.hib.dat102.database;
+
+public interface DAO {
+
+	public Description getDescription();
+}

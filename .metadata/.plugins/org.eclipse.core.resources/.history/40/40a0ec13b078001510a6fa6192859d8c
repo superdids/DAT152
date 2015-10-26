@@ -1,0 +1,7 @@
+package no.hib.dat102.database;
+
+public interface ProductDAO {
+
+	public Product create(Product p);
+	public Product read(Integer primaryKey);
+}

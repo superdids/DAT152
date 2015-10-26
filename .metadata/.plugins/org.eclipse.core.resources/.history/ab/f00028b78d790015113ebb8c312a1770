@@ -1,0 +1,83 @@
+package no.hib.dat152.util;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
+
+import no.hib.dat102.database.AvailableLanguages;
+import no.hib.dat102.database.Description;
+import no.hib.dat102.database.DescriptionId;
+import no.hib.dat102.database.Product;
+
+/**
+ * Application Lifecycle Listener implementation class ServletContext
+ *
+ */
+@WebListener
+public class ServletContext implements ServletContextListener {
+	
+	private static List<Description> descriptions = new ArrayList<Description>();
+	private static List<Product> products = new ArrayList<Product>();
+	private static AvailableLanguages languages = new AvailableLanguages();
+	/**
+     * @see ServletContextListener#contextDestroyed(ServletContextEvent)
+     */
+    public void contextDestroyed(ServletContextEvent arg0)  { 
+    
+    }
+
+	/**
+     * @see ServletContextListener#contextInitialized(ServletContextEvent)
+     */
+    public void contextInitialized(ServletContextEvent arg0)  { 
+    	languages.addLanguage("no");
+    	languages.addLanguage("en");
+    	languages.addLanguage("en_US");
+    	languages.addLanguage("en_GB");
+    	languages.addLanguage("es");
+    	
+    	Product a = new Product(1,"White Coffee Cup (TM)", 6.5, "images/white.jpeg");
+    	Product b = new Product(2,"Black Coffee Cup (TM)", 4.75, "images/black.jpg");
+    
+    	products.add(a);
+    	products.add(b);
+    	
+        descriptions.add(new Description(new DescriptionId(1,"no"),"norsk forklaring av den hvite koppen" , a));
+        descriptions.add(new Description(new DescriptionId(1,"es"),"para española uno blanco cup!" , a));
+        descriptions.add(new Description(new DescriptionId(1,"en_US"),"english description of the white cup" , a));
+        descriptions.add(new Description(new DescriptionId(1,"en_US"),"english description of the white cup" , a));
+        descriptions.add(new Description(new DescriptionId(1,"en_GB"),"Bloody hell! What a nice white cup! Ill fill this with my TEA :)" , a));
+     
+		
+        descriptions.add(new Description(new DescriptionId(2,"no"),"norsk forklaring av den sorte koppen" , b));
+        descriptions.add(new Description(new DescriptionId(2,"es"),"para española uno negra cup!" , b));
+        descriptions.add(new Description(new DescriptionId(2,"en_US"),"english description of the black cup" , b));
+        descriptions.add(new Description(new DescriptionId(2,"en"),"english description of the black cup" , b));
+        descriptions.add(new Description(new DescriptionId(1,"en_GB"),"Bloody hell! What a nice black cup! Ill fill this with my TEA :)" , a));
+       
+        
+        		
+    }
+	
+    public static List<Description> fetchDescriptionsFromContext() {
+    	return descriptions;
+    }
+    
+    public static List<Product> fetchProductsFromContext() {
+    	return products;
+    }
+    
+    public static AvailableLanguages getAvailableLanguagesFromContext() {
+    	return languages;
+    }
+    
+    public static void updateDescriptionsInContext(List<Description> d) {
+    	descriptions = new ArrayList<Description>();
+    	for(Description descr : d)
+    		descriptions.add(descr);
+    }
+   
+}

@@ -457,7 +457,7 @@ var minNettleser = {
 		            	  if(y == -1) alert("not found");
 		            	  else alert(this.nettlesere[y] + " " + tmp);
 //		            	  var reg = //ig
-		            	  alert(navigator.userAgent);
+//		            	  alert(navigator.userAgent);
 		              }
 };
 

@@ -1,0 +1,13 @@
+package no.hib.dat152.models;
+
+import java.io.Serializable;
+
+public class MyAwesomeCart implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	private class Wrapper {
+		
+		private Integer count;
+	}
+	
+}

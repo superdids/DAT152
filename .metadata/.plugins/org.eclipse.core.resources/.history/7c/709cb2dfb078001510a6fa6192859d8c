@@ -1,0 +1,24 @@
+package no.hib.dat102.database;
+
+import java.util.List;
+
+/**
+ * Kontrakt som definerer oppførselen til et Data Access Object
+ * som opererer på produkter i en gitt samling
+ * @author Didrik
+ *
+ */
+public interface ProductDAO {
+
+	/**
+	 * Oppretter et nytt produkt
+	 * @param p 
+	 * @return
+	 */
+	public Product create(Product p);
+	public Product read(Integer primaryKey);
+	public Product update(Product p);
+	public boolean delete(Integer primaryKey);
+	
+	public List<Product> readAll();
+}

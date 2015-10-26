@@ -1,0 +1,7 @@
+package no.hib.dat152;
+
+public class Klasse {
+public static void main(String[] args) {
+	
+}
+}
