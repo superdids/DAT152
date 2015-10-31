@@ -1,0 +1,43 @@
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>2.0</jsp-version>
+	<short-name>Custom Tags</short-name>
+	<tag>
+		<name>ShortText</name>
+		<tag-class>no.hib.dat152.customTags.ShortText</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<name>maxChars</name>
+			<required>false</required>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>CopyrightSince</name>
+		<tag-class>no.hib.dat152.customTags.CopyrightSince</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<name>year</name>
+			<required>false</required>
+		</attribute>
+	</tag>
+	<tag>
+		<name>price</name>
+		<tag-class>no.hib.dat152.customTags.CurrencyConverter</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<name>price</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>amount</name>
+			<required>false</required>
+		</attribute>
+		<attribute>
+			<name>language</name>
+			<required></required>
+		</attribute>
+
+	</tag>
+
+</taglib>

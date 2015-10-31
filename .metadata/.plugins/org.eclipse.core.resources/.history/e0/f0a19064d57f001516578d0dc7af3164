@@ -1,0 +1,19 @@
+package no.hib.dat152.models;
+
+import java.text.NumberFormat;
+import java.util.Currency;
+import java.util.Locale;
+
+public class Main {
+public static void main(String[] args) {
+	Locale loc = new Locale("en_GB");
+	if (loc != null) {
+		NumberFormat nf = NumberFormat.getInstance(loc);
+//		nf.setCurrency(Currency.getInstance(Locale.US));
+		System.out.println(NumberFormat.getInstance(loc).format(1000000));
+	}
+	System.out.println(Locale.US);
+	
+	System.out.println(Currency.getInstance(Locale.US));
+}
+}

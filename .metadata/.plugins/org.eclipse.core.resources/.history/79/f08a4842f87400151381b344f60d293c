@@ -1,8 +1,0 @@
-package no.hib.dat152;
-
-public class Klasse {
-
-	public static boolean validateName(String n) {
-		return n != null & n.matches("[a-zA-ZøæåØÆÅ]{3,50}");
-	}
-}

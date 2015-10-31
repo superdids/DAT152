@@ -1,0 +1,67 @@
+package no.hib.dat152.controllers;
+
+import java.io.IOException;
+import java.util.HashMap;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import no.hib.dat102.database.Description;
+import no.hib.dat102.database.DescriptionDAOContext;
+import no.hib.dat102.database.DescriptionId;
+import no.hib.dat152.models.CartItem;
+import no.hib.dat152.models.MyAwesomeCart;
+import no.hib.dat152.util.RequestHelper;
+
+/**
+ * Servlet implementation class Cart
+ */
+@WebServlet("/cart")
+public class Cart extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		request = RequestHelper.setLanguage(request);
+
+		MyAwesomeCart cart = (MyAwesomeCart) request.getSession().getAttribute("cart");
+		if(cart != null) {
+			HashMap<Integer,CartItem> items = (HashMap<Integer, CartItem>) cart.getItems();
+			DescriptionDAOContext dao = new DescriptionDAOContext();
+			Cookie cookie = RequestHelper.getCookie(request, "language");
+			if (cookie != null) {
+				String language = cookie.getValue();
+
+				for(Integer key : items.keySet()) {
+					CartItem item = items.get(key);
+					Description description = dao.read(new DescriptionId(key, language));
+					if(description == null) {
+						item.setDescription("");
+					} 
+				}
+				request.setAttribute("items", cart.getItems());
+			}
+		}
+
+
+
+		request.getRequestDispatcher("/cart.jsp").forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response = RequestHelper.generateCookie(request, response, "language", "locale");
+		response.sendRedirect(request.getContextPath()+"/cart");
+	}
+
+}

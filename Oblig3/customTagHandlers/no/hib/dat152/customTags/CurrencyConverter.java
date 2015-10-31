@@ -8,46 +8,46 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
+/**
+ * Klassen som formaterer utskrift av valuta, avhengig av angitt språkkode.  
+ * @author Didrik, Lars-Jo, Ståle
+ *
+ */
 public class CurrencyConverter extends SimpleTagSupport {
 
-	private String language = "en_US";
+	private String language;
 	private Double price;
-	private Integer amount;
-	
-	
-	private void setPrice(Double price) {
+	private Double valueInEuros;
+
+
+	public void setPrice(Double price) {
 		this.price = price;
 	}
-	
-	private void setAmount(Integer amount) {
-		this.amount= amount;
-	}
-	
-	private void setLanguage(String language) {
+
+	public void setLanguage(String language) {
 		this.language = language;
 	}
 	
+	public void setValueInEuros(Double valueInEuros) {
+		this.valueInEuros = valueInEuros;
+	}
+
+	/**
+	 * doTag() metoden som må overskrives ved implementasjon av 
+	 * egendefinert JSP-tag. 
+	 * Foretar formatering og skriver ut resultatet som tagen skal produsere.
+	 */
 	@Override
 	public void doTag() throws JspException, IOException {
-	//	StringWriter stringWriter = new StringWriter();
 		JspWriter out = getJspContext().getOut();
-		
-		if (price == null) return;
-		Locale loc = new Locale(language);
-		if (loc == null) return;
-		
-		NumberFormat formatter = NumberFormat.getCurrencyInstance(loc);
-		String result = null;
-		if(amount != null) {
-			result = formatter.format(price);
-		} else {
-			result = formatter.format(price*amount);
-		}
 
-		out.print(result);
-	}
-	
-	private Double convertCurrency(Double amt) {
-		return null;
+		Locale loc = new Locale(language);
+		
+		if(loc != null) {
+
+			NumberFormat formatter = NumberFormat.getInstance(loc);
+			String result = formatter.format(valueInEuros*price);
+			out.print(result);
+		}
 	}
 }

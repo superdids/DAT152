@@ -13,7 +13,10 @@ import no.hib.dat102.database.DescriptionId;
 import no.hib.dat102.database.Product;
 
 /**
- * Application Lifecycle Listener implementation class ServletContext
+ * Kontekst lytter som "initialiserer databasen". Vi gjør oppmerksom på
+ * at hvis vi hadde brukt en faktisk database, hadde vi ikke trengt å 
+ * hardkode inn verdiene i contextInitialized. 
+ * @author Didrik, Lars-Jo, Ståle
  *
  */
 @WebListener
@@ -41,36 +44,58 @@ public class ServletContext implements ServletContextListener {
     	
     	Product a = new Product(1,"White Coffee Cup (TM)", 6.5, "images/white.jpeg");
     	Product b = new Product(2,"Black Coffee Cup (TM)", 4.75, "images/black.jpg");
-    
+    	Product c = new Product(3,"Ultimate Coffe Cup (OMG)", 1000.0, "images/ultimate.jpg");
+    	
     	products.add(a);
     	products.add(b);
+    	products.add(c);
     	
-        descriptions.add(new Description(new DescriptionId(1,"no"),"norsk forklaring av den hvite koppen" , a));
-        descriptions.add(new Description(new DescriptionId(1,"es"),"para española uno blanco cup!" , a));
-        descriptions.add(new Description(new DescriptionId(1,"en_US"),"english description of the white cup" , a));
-        descriptions.add(new Description(new DescriptionId(1,"en"),"english description of the white cup" , a));
-        descriptions.add(new Description(new DescriptionId(1,"en_GB"),"Bloody hell! What a nice white cup! Ill fill this with my TEA :)" , a));
+        descriptions.add(new Description(new DescriptionId(1,"no"),"Denne koppen er helt fantastisk hvit!" , a));
+        descriptions.add(new Description(new DescriptionId(1,"es"),"Para española uno blanco cup!" , a));
+        descriptions.add(new Description(new DescriptionId(1,"en_US"),"This cup is amazingly white!" , a));
+        descriptions.add(new Description(new DescriptionId(1,"en"),"This cup is amazingly white!" , a));
+        descriptions.add(new Description(new DescriptionId(1,"en_GB"),"This cup is bloody white!" , a));
      
-		
-        descriptions.add(new Description(new DescriptionId(2,"no"),"norsk forklaring av den sorte koppen" , b));
-        descriptions.add(new Description(new DescriptionId(2,"es"),"para española uno negra cup!" , b));
-        descriptions.add(new Description(new DescriptionId(2,"en_US"),"english description of the black cup" , b));
-        descriptions.add(new Description(new DescriptionId(2,"en"),"english description of the black cup" , b));
-        descriptions.add(new Description(new DescriptionId(2,"en_GB"),"Bloody hell! What a nice black cup! Ill fill this with my TEA :)" , b));		
+        descriptions.add(new Description(new DescriptionId(2,"no"),"Denne koppen her helt fantastisk svart!" , b));
+        descriptions.add(new Description(new DescriptionId(2,"es"),"Para española uno negra cup!" , b));
+        descriptions.add(new Description(new DescriptionId(2,"en_US"),"This cup is amazingly black!" , b));
+        descriptions.add(new Description(new DescriptionId(2,"en"),"This cup is amazingly black!" , b));
+        descriptions.add(new Description(new DescriptionId(2,"en_GB"),"This cup is bloody black!" , b));		
+        
+        descriptions.add(new Description(new DescriptionId(3,"no"),"Dette er den ultimate kaffekoppen for deg som setter på hva du drikker fra." , c));
+        descriptions.add(new Description(new DescriptionId(3,"es"),"Ésta es la taza del café perfecto para aquellos que aprecian lo que usted bebe de." , c));
+        descriptions.add(new Description(new DescriptionId(3,"en_US"),"This is the ultimate coffee cup for quality oriented costumers." , c));
+        descriptions.add(new Description(new DescriptionId(3,"en"),"This is the ultimate coffee cup for quality oriented costumers." , c));
+        descriptions.add(new Description(new DescriptionId(3,"en_GB"), "This is a bloody large cup. You might enjoy your cup of coffee or perhaps some tea.", c));
     }
 	
+    /**
+     * Henter ut beskrivelsene fra kontekst
+     * @return Beskrivelsene
+     */
     public static List<Description> fetchDescriptionsFromContext() {
     	return descriptions;
     }
     
+    /**
+     * Henter produktene fra kontekst
+     * @return Produktene
+     */
     public static List<Product> fetchProductsFromContext() {
     	return products;
     }
     
+    /**
+     *  Henter tilgjengelige språk fra kontekst
+     */
     public static AvailableLanguages getAvailableLanguagesFromContext() {
     	return languages;
     }
     
+    /**
+     * Oppdaterer referansen til samlingen med beskrivelser 
+     * @param d Samling med beskrivelser
+     */
     public static void updateDescriptionsInContext(List<Description> d) {
     	descriptions = new ArrayList<Description>();
     	for(Description descr : d)

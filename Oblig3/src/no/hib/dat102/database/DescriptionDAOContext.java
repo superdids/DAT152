@@ -5,16 +5,24 @@ import java.util.List;
 
 import no.hib.dat152.util.ServletContext;
 
+/**
+ * Implementasjon av DescriptionDAO som opererer på verdier som 
+ * ligger i web-applikasjonens kontekst
+ * @author Didrik, Lars-Jo, Ståle
+ *
+ */
 public class DescriptionDAOContext implements DescriptionDAO {
 
 	
+	/**
+	 * Tom konstruktør
+	 */
 	public DescriptionDAOContext() {
 		
 	}
 	
 	@Override
 	public Description create(Description d) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -22,7 +30,7 @@ public class DescriptionDAOContext implements DescriptionDAO {
 	public Description read(DescriptionId primaryKey) {
 		List<Description> descriptions = ServletContext.fetchDescriptionsFromContext();
 		for(Description d : descriptions) {
-			if(d.getId() == primaryKey) return d;
+			if(d.getId().equals(primaryKey)) return d;
 		}
 		return null;
 	}

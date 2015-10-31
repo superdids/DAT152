@@ -2,21 +2,17 @@ package no.hib.dat152.controllers;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import no.hib.dat102.database.Description;
 import no.hib.dat102.database.DescriptionDAOContext;
 import no.hib.dat102.database.Product;
 import no.hib.dat102.database.ProductDAOContext;
-import no.hib.dat152.models.CartItem;
-import no.hib.dat152.models.MyAwesomeCart;
 import no.hib.dat152.util.RequestHelper;
 
 /**

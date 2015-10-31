@@ -1,0 +1,18 @@
+package no.hib.dat152;
+
+public class Main {
+	public static void main(String[] args) {
+		
+	}
+	
+	private static void computeArr(int [] arr) {
+		for(int x = 0; x < size; ++x) {
+			arr[x] = (x+1);
+		}
+		
+	}
+	
+	private static void computeRec(int a) {
+		
+	}
+}

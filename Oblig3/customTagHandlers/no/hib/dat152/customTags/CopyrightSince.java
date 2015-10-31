@@ -11,6 +11,16 @@ import org.joda.time.DateTime;
 
 import com.frequal.romannumerals.Converter;
 
+/**
+ * Implementasjon av en egendefinert JSP-tag som skal skrive 
+ * ut startår (tatt imot som parameter, påkrevd) og nå-år
+ * som romertall. Merk at vi bruker et eksternt bibliotek
+ * å foreta konverteringen. Om det blir komplikasjoner å 
+ * importere JAR-filen, kan den hentes her:
+ * http://frequal.com/RomanNumerals/index.html
+ * @author Didrik, Lars-Jo, Ståle
+ *
+ */
 public class CopyrightSince extends SimpleTagSupport {
 	
 	private Integer year;
@@ -19,6 +29,10 @@ public class CopyrightSince extends SimpleTagSupport {
 		this.year = year;
 	}
 	
+	/**
+	 * doTag() metoden som må overkjøres ved implementasjon
+	 * skriver ut resultatet som JSP-tagen skal produsere.
+	 */
 	@Override
 	public void doTag() throws JspException, IOException {
 		StringWriter stringWriter = new StringWriter();
@@ -34,6 +48,10 @@ public class CopyrightSince extends SimpleTagSupport {
 		out.print(constant + " " + toRome() + " " + result);
 	}
 
+	/**
+	 * Konverterer til romertall
+	 * @return Resultatstrengen som skal skrives ut på en JSP-side
+	 */
 	private String toRome() {
 		DateTime dateTime = new DateTime(System.currentTimeMillis());
 		Converter converter = new Converter();

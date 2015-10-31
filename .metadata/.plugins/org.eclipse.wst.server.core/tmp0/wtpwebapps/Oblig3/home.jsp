@@ -12,25 +12,9 @@
 <title>Welcome</title>
 </head>
 <body>
-<form action="home" method="POST">
-	<select id="language" name="language" onchange="submit()" ><!-- onchange="submit()" --> 
-		<option disabled="disabled" selected="selected" >
-			<fmt:message key="products.label.chooseLang" />
-		</option>
-		<c:forEach var="langu" items="${availableLanguages}">
-			<option value="${langu}">
-				<fmt:setLocale value="${langu}" />
-				<fmt:setBundle basename="no.hib.dat152.i18n.text" />
-				<fmt:message key="products.label.lang" />
-				<c:if test="${language == langu}" > 
-					<fmt:message key="products.label.selected" />
-				</c:if>
-			</option>
-		</c:forEach>
-		<fmt:setLocale value="${language}" />
-		<fmt:setBundle basename="no.hib.dat152.i18n.text" />
-	</select>
-</form>
+
+<c:set var="url" value="home" />
+<jsp:include page="selectLanguage.jsp" />
 <H1>Kaffekopper AS</H1>
 
 <img src="images/java.png" height="200" />
@@ -39,7 +23,7 @@
 <p><label for="text"><fmt:message key="home.label.text" /></label> 
 <a href="products"><fmt:message key="home.label.products" /></a></p>
 
-<cs:CopyrightSince year="2020">Høgskolen i Bergen</cs:CopyrightSince>
+<cs:CopyrightSince year="2008">Høgskolen i Bergen</cs:CopyrightSince>
 
 </body>
 </html>

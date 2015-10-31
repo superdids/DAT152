@@ -14,14 +14,16 @@ public class CartItem implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Product product;
 	private Integer amount;
+	private String description;
 	
 	public CartItem() {
-		this(null,null);
+		this(null,null,null);
 	}
 	
-	public CartItem(Product product, Integer amount) {
+	public CartItem(Product product, Integer amount, String description) {
 		this.product = product;
 		this.amount = amount;
+		this.description = description;
 	}
 
 	public Product getProduct() {
@@ -40,6 +42,14 @@ public class CartItem implements Serializable {
 		this.amount = amount;
 	}
 	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public void addAmount() {
 		amount++;
 	}

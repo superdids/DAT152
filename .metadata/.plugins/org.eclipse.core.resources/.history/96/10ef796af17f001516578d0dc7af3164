@@ -1,0 +1,97 @@
+package no.hib.dat152.util;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import no.hib.dat102.database.AvailableLanguages;
+import no.hib.dat102.database.DescriptionDAOContext;
+import no.hib.dat102.database.Product;
+import no.hib.dat152.models.CartItem;
+import no.hib.dat152.models.MyAwesomeCart;
+
+/**
+ * Hjelpeklasse som oppdaterer request/response objektet, eller
+ * henter verdier fra request objektet
+ * @author Didrik, Lars-Jo, Ståle
+ */
+public class RequestHelper {
+
+	/**
+	 * Henter språkkode
+	 * @param request Request objektet
+	 * @return Språkkoden om den finnes i request objektet, null ellers
+	 */
+	public static String getLanguageFromRequest(HttpServletRequest request) {		
+		String lang = request.getParameter("language");
+		return lang != null ? lang : "en";
+	}
+
+	/**
+	 * Henter en cookie med gitt request objekt og cookie navn
+	 * @param request Request objektet
+	 * @param cookieName Cookie navn
+	 * @return Referanse til et cookie objekt om navnet eksisterer, null ellers
+	 */
+	public static Cookie getCookie(HttpServletRequest request, String cookieName) {
+		Cookie cookie = null;
+		Cookie [] cookies = request.getCookies();
+		if (cookies != null) {
+			for(Cookie c : cookies) {
+				if(c.getName().equals(cookieName)) { cookie = c; break; }
+			}
+		}
+
+		return cookie;
+	}
+
+	/**
+	 * Oppretter nytt cookie objekt
+	 * @param request Request objektet
+	 * @param response Response objektet
+	 * @param paramReference
+	 * @param cookieName
+	 * @return
+	 */
+	public static HttpServletResponse generateCookie(HttpServletRequest request, 
+			HttpServletResponse response, String paramReference,
+			String cookieName) {
+		String param = request.getParameter(paramReference);
+
+		Cookie cookie = new Cookie(cookieName, param);
+		response.addCookie(cookie);
+		return response;
+	}
+
+	public static HttpServletRequest setLanguage(HttpServletRequest request) {
+		Cookie cookie = RequestHelper.getCookie(request, "locale");
+		String dynamic = "en";
+		if(cookie != null) 
+			dynamic = cookie.getValue();
+
+		AvailableLanguages availableLanguages = ServletContext.getAvailableLanguagesFromContext();
+
+		request.setAttribute("availableLanguages", availableLanguages.getLanguages());
+		request.getSession().setAttribute("language", dynamic);
+		return request;
+	}
+
+	public static HttpServletRequest updateCart(HttpServletRequest request, Product product) {
+		MyAwesomeCart cart = (MyAwesomeCart) request.getSession().getAttribute("cart");
+		Integer id = product.getProductNumber();
+		DescriptionDAOContext dao = new DescriptionDAOContext();
+	
+		if(cart == null) {
+			cart = new MyAwesomeCart();
+			cart.addItem(id, new CartItem(product, 1,""));
+		} else 
+			if(cart.inCart(id)) 
+				cart.addCount(id);
+			else
+				cart.addItem(id, new CartItem(product,1,""));
+
+		request.getSession().setAttribute("cart", cart);
+
+		return request;
+	}
+}

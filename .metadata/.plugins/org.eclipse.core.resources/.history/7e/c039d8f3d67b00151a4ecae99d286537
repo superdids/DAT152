@@ -1,0 +1,18 @@
+package no.hib.dat152;
+
+public class Main {
+	public static void main(String[] args) {
+		
+	}
+	
+	private static void computeArr(int [] arr) {
+		int sum = 0;
+		for(int x = 0; x < arr.length; ++x) 
+			sum += arr[x];
+		System.out.println(sum);
+	}
+	
+	private static void computeRec(int a) {
+		
+	}
+}

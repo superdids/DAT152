@@ -1,50 +1,65 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="short" uri="WEB-INF/customTags.tld" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="custom" uri="WEB-INF/customTags.tld" %>
+
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="no.hib.dat152.i18n.text" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="${language}">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Cart</title>
 </head>
 <body>
-<h1>Cart</h1>
+<c:set var="url" value="cart" />
+<jsp:include page="selectLanguage.jsp" />
+
+<h1><fmt:message key="cart.title" /></h1>
 <table border="1">
 	<tr>
-		<th>Name</th>
-		<th>Short description</th>
-		<th>Price</th>
-		<th>Quantity</th>
-		<th>Total</th>
+		<th><fmt:message key="cart.name" /></th>
+		<th><fmt:message key="cart.shortDescription" /></th>
+		<th><fmt:message key="cart.price" /></th>
+		<th><fmt:message key="cart.quantity" /></th>
+		<th><fmt:message key="cart.total" /></th>
 	</tr>
 	<c:set var="sum" value="0" />
 	<c:forEach var="item" items="${items}">
 		<c:set var="amnt" value="${item.value.amount}" />
 		<c:set var="price" value="${item.value.product.priceInEuro}" />
+		<c:set var="total" value="${price * amnt}" />
+		<c:set var="sum" value="${sum + total}" />
+		<c:set var="eurVal">
+			<fmt:message key="currency.euroValue" />
+		</c:set>
+		<c:set var="symb">
+			<fmt:message key="currency.symbol" />
+		</c:set>
 		<tr>
 			<td>${item.value.product.productName}</td>
-			<td>Nothing! (her skal shorttext brukes, men trenger først 
-			velfungerende description.)</td>
+			<td><custom:ShortText maxChars="15">${item.value.description}</custom:ShortText></td>
 		
-			<td>${item.value.product.priceInEuro}</td>
-			<td>${item.value.amount}</td>
-<!--  			<td>asd</td> -->
-	<td> some stuff
-<%-- 	<c:set var="x"><customTags:cc price="${price}" amount="${amount}" /></c:set> --%>
-	</td>
+			<td align="right">${symb} <custom:price price="${price}" language="${language}" valueInEuros="${eurVal}" /> </td>
+			<td align="right">${amnt}</td>
+			<td align="right">${symb} <custom:price price="${total}" language="${language}" valueInEuros="${eurVal}"  /></td>
 
 		</tr>
-
-<%-- <c:set var="sum" value="${sum + x}" /> --%>
 	</c:forEach>
 	<tr>
-		<td colspan="4"></td>
-		<td>SumDYNAMISKSNART</td>
+		<td colspan="4" align="right"><b><fmt:message key="cart.totalAmount" /></b></td>
+		<td colspan="1" align="right"><b>${symb} <custom:price price="${sum}" language="${language}" valueInEuros="${eurVal}" /></b></td>
 	</tr>
 </table>
 
-<short:ShortText maxChars="10">Sup ma bitches!</short:ShortText>
+<br />
+<a href="home"><fmt:message key="link.home" /></a>
+<a href="products"><fmt:message key="link.cart" /></a>
+<br />
+<br />
+<custom:CopyrightSince year="2008">HÃ¸gskolen i Bergen</custom:CopyrightSince>
+
 
 </body>
 </html>

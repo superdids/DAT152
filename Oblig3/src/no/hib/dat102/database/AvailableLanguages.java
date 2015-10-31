@@ -1,16 +1,18 @@
 package no.hib.dat102.database;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Entitet/bønne som holder på en samling med tilgjengelige
  * språk for web applikasjonen
- * @author Didrik
+ * @author Didrik, Lars-Jo, Ståle
  *
  */
-public class AvailableLanguages {
+public class AvailableLanguages implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private List<String> languages;
 	
 	/**

@@ -1,0 +1,56 @@
+package no.hib.dat102.database;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import no.hib.dat152.util.ServletContext;
+
+public class DescriptionDAOContext implements DescriptionDAO {
+
+	
+	public DescriptionDAOContext() {
+		
+	}
+	
+	@Override
+	public Description create(Description d) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Description read(DescriptionId primaryKey) {
+		List<Description> descriptions = ServletContext.fetchDescriptionsFromContext();
+		for(Description d : descriptions) {
+			if(d.getId() == primaryKey) return d;
+		}
+		return null;
+	}
+
+	@Override
+	public Description update(Description d) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean delete(DescriptionId primaryKey) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Description> readAll() {
+		List<Description> descriptions = ServletContext.fetchDescriptionsFromContext();
+		return descriptions.size() > 0 ? descriptions : null;
+	}
+	
+	@Override 
+	public List<Description> readAllDescriptionsByLanguageCode(String langCode) {
+		List<Description> descriptions = ServletContext.fetchDescriptionsFromContext();
+		List<Description> toRet = new ArrayList<Description>();
+		for(Description d : descriptions) 
+			if(d.getId().getLanguageCode().equals(langCode)) toRet.add(d);
+		return toRet.size() > 0 ? toRet : null;
+	}
+}

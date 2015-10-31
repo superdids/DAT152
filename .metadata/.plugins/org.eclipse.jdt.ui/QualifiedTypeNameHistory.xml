@@ -27,4 +27,5 @@
 <fullyQualifiedTypeName name="java.io.StringWriter"/>
 <fullyQualifiedTypeName name="com.frequal.romannumerals.Converter"/>
 <fullyQualifiedTypeName name="java.util.Locale"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>

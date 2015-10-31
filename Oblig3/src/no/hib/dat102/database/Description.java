@@ -1,10 +1,14 @@
 package no.hib.dat102.database;
 
+import java.io.Serializable;
+
 /**
  * Entitet/bønne som representerer en beskrivelse av et produkt
+ * @author Didrik, Lars-Jo, Ståle
  */
-public class Description {
+public class Description implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private DescriptionId id;
 	private String text;
 	private Product product;

@@ -2,10 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%-- <c:set var="language"  --%>
-<%-- value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"  --%>
-<%-- scope="session" /> --%>
-<%-- <c:set var="language" value="${language}" scope="session" /> --%>
+<%@ taglib prefix="custom" uri="WEB-INF/customTags.tld" %>
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="no.hib.dat152.i18n.text" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,25 +12,9 @@
 <title>Products</title>
 </head>
 <body>
-<form action="products" method="POST">
-	<select id="language" name="language" onchange="submit()">
-		<option disabled="disabled" selected="selected" >
-			<fmt:message key="products.label.chooseLang" />
-		</option>
-		<c:forEach var="langu" items="${availableLanguages}">
-			<option value="${langu}">
-				<fmt:setLocale value="${langu}" />
-				<fmt:setBundle basename="no.hib.dat152.i18n.text" />
-				<fmt:message key="products.label.lang" />
-				<c:if test="${language == langu}" > 
-					<fmt:message key="products.label.selected" />
-				</c:if>
-			</option>
-		</c:forEach>
-		<fmt:setLocale value="${language}" />
-		<fmt:setBundle basename="no.hib.dat152.i18n.text" />
-	</select>
-</form>
+
+<c:set var="url" value="products" />
+<jsp:include page="selectLanguage.jsp" />
 
 <table>
 <c:forEach var="description" items="${descriptions}">
@@ -43,22 +24,28 @@
 		<img src="${description.product.relativePathToImg}" height="150"/>
 	</td>
 	<td style="vertical-align:top">
-		<label for="name"><fmt:message key="products.label.name" /></label>: ${description.product.productName} <br/>
-		<label for="price"><fmt:message key="products.label.price" /></label>: ${description.product.priceInEuro} <br/>
-		<label for="description"><fmt:message key="products.label.description" /></label>: ${description.text} <br/><br/>
+		<c:set var="eurVal">
+			<fmt:message key="currency.euroValue" />
+		</c:set>
+		<fmt:message key="products.label.name" />: ${description.product.productName} <br />
+		<fmt:message key="currency.symbol" /> <custom:price price="${description.product.priceInEuro}" language="${language}" valueInEuros="${eurVal}" /> <br />
+		<fmt:message key="products.label.description" />: ${description.text} <br/><br/>
 		<form action="products" method="POST">
 			<fmt:message key="products.button.submit" var="buttonValue" />
 			<input type="hidden" name="item" value="p${description.id.productNumber}" />
 			<input type="submit" value="${buttonValue}" />
-			<br/> p${description.id.productNumber}
 		</form>
 		</td>
 </tr>
 </c:forEach>
 </table>
-
+<br />
+<br />
 <a href="home"><fmt:message key="link.home" /></a>
 <a href="cart"><fmt:message key="link.cart" /></a>
+<br />
+<br />
+<custom:CopyrightSince year="2008">Høgskolen i Bergen</custom:CopyrightSince>
 
 </body>
 </html>

@@ -1,0 +1,24 @@
+products.label.name = Nombre
+products.label.price = Precio
+products.label.description = Descriptión
+products.button.submit = Añadir a carrito
+products.label.chooseLang = Alernar lengua
+products.label.lang = Español
+products.label.selected = (Seleccionade)
+
+home.label.text = Echar un vistazo a nuestros maravillosos
+home.label.products = productos
+
+link.home = Casa
+link.cart = Carreta
+link.products = Productos
+
+currency.euroValue = 1
+
+cart.title = Carreta
+cart.name = Nombre
+cart.shortDescription = Corto descriptión
+cart.price = Precio
+cart.quantity = Cantidad
+cart.total = Total
+cart.totalAmount = Total amount:

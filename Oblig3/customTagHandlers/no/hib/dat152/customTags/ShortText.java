@@ -7,6 +7,12 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
+/**
+ * Implementasjonen av egedefinert JSP Tag "ShortText" som skal
+ * forkorte en tekst i henhold til lengde, angitt i parameter. 
+ * @author Didrik, Lars-Jo, Ståle
+ *
+ */
 public class ShortText extends SimpleTagSupport {
 
 	private Integer maxChars;
@@ -15,13 +21,17 @@ public class ShortText extends SimpleTagSupport {
 		this.maxChars = maxChars;
 	}
 	
+	/**
+	 * doTag() metoden som må overkjøres ved implementasjon.
+	 * Forkorter teksten og legger på "..." på slutten.
+	 * Skriver ut resultatet som tagen skal produsere. 
+	 */
 	@Override
 	public void doTag() throws JspException, IOException {
 		
 		StringWriter stringWriter = new StringWriter();
-		//henter verdi fra attributt.
-		JspWriter out = getJspContext().getOut();
 		//henter verdi fra kroppen til taggen
+		JspWriter out = getJspContext().getOut();
 		
 		getJspBody().invoke(stringWriter);
 		String result = stringWriter.toString();

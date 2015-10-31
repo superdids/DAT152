@@ -1,0 +1,28 @@
+products.label.name = Name
+products.label.price = Price
+products.label.description = Description
+products.button.submit = Add to cart
+products.label.chooseLang = Select language
+products.label.lang = English
+products.label.selected = (Selected)
+
+home.label.text = Have a look at our wonderful
+home.label.products = products
+
+link.home = Home
+link.cart = Cart
+link.products = Products
+
+currency.euroValue = 0.9
+
+cart.title = Cart
+cart.name = Name
+cart.shortDescription = Short description
+cart.price = Price
+cart.quantity = Quantity
+cart.total = Total
+cart.totalAmount = Total amount:
+cart.currency = USD
+cart.symbol = $
+
+

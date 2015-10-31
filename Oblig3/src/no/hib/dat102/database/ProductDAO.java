@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Kontrakt som definerer oppførselen til et Data Access Object
  * som opererer på produkter i en gitt samling
- * @author Didrik
+ * @author Didrik, Lars-Jo, Ståle
  *
  */
 public interface ProductDAO {

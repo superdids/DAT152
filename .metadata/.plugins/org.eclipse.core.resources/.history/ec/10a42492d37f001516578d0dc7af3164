@@ -1,0 +1,24 @@
+products.label.name = Navn
+products.label.price = Pris
+products.label.description = Beskrivelse
+products.button.submit = Legg til i handlevogn
+products.label.chooseLang = Velg språk
+products.label.lang = Norsk
+products.label.selected = (Valgt)
+
+home.label.text = Ta en titt på våre fantastiske
+home.label.products = produkter
+
+link.home = Hjem
+link.cart = Handlevogn
+link.products = Produkter
+
+currency.euroValue = 9
+
+cart.title = Handlevogn
+cart.name = Navn
+cart.shortDescription = Kort beskrivelse
+cart.price = Pris
+cart.quantity = Antall
+cart.total = Total
+cart.totalAmount = Total amount:

@@ -3,7 +3,7 @@ package no.hib.dat102.database;
 /**
  * Entitet/bønne som representerer en primærnøkkel komposisjon som skal
  * benyttes som primærnøkkel i klassen Description
- * @author Didrik
+ * @author Didrik, Lars-Jo, Ståle
  *
  */
 public class DescriptionId {
@@ -60,5 +60,17 @@ public class DescriptionId {
 		this.languageCode = languageCode;
 	}
 	
-	
+	@Override
+	public boolean equals(Object another) {
+		if(another == null) {
+			return this == null;
+		} 
+		
+		if(another instanceof DescriptionId) {
+			DescriptionId other = (DescriptionId) another;
+			return this.productNumber == other.productNumber 
+					&& this.languageCode.equals(other.languageCode);
+		}
+		return false;
+	}
 }

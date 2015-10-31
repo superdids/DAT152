@@ -1,0 +1,19 @@
+package no.hib.dat152;
+
+public class Main {
+	public static void main(String[] args) {
+		
+	}
+	
+	private static void computeArr(int [] arr) {
+		int sum = 0;
+		for(int x = 0; x < arr.length; ++x) {
+			arr[x] = (x+1);
+		}
+		
+	}
+	
+	private static void computeRec(int a) {
+		
+	}
+}

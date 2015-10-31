@@ -1,0 +1,13 @@
+package no.hib.dat152.models;
+
+import java.text.NumberFormat;
+import java.util.Locale;
+
+public class Main {
+public static void main(String[] args) {
+	Locale loc = new Locale("en_UK");
+	if (loc != null) {
+		System.out.println(NumberFormat.getCurrencyInstance(loc).format(10));
+	}
+}
+}
